@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>S.V.M. Public School, Kharak Jatan | The School of Your Dreams</title>
+<meta name="description" content="Saraswati Vidya Mandir Public School, Kharak Jatan (Rohtak), Haryana. 100% board results, scooty & bicycle honors, interactive 3D campus, and online registration for 2026–27.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- DesignCode ThreeUI Kage Typography: Instrument Serif + Onest -->
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #d8322a;
+  --primary-hover: #b9251e;
+  --primary-light: rgba(216, 50, 42, 0.09);
+  --primary-glow: rgba(216, 50, 42, 0.35);
+  --ink: #1b2340;
+  --card: rgba(255, 252, 247, 0.94);
+  --card-glass: rgba(255, 252, 247, 0.86);
+  --card-border: rgba(255, 255, 255, 0.95);
+  --muted: #4e5772;
+  --navy: #15224e;
+  --navy-light: #263875;
+  --gold: #df9b12;
+  --gold-bg: rgba(223, 155, 18, 0.12);
+  --green: #128807;
+  --border: rgba(27, 35, 64, 0.08);
+  --shadow: 0 16px 45px rgba(15, 25, 55, 0.22);
+  --radius: 22px;
+  --radius-sm: 14px;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --primary: #f0483f;
+    --primary-hover: #d8322a;
+    --primary-light: rgba(240, 72, 63, 0.16);
+    --primary-glow: rgba(240, 72, 63, 0.45);
+    --ink: #f3eee4;
+    --card: rgba(18, 24, 46, 0.94);
+    --card-glass: rgba(18, 24, 46, 0.86);
+    --card-border: rgba(255, 255, 255, 0.12);
+    --muted: #b8c0d4;
+    --navy: #243573;
+    --navy-light: #374f9d;
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow: 0 16px 45px rgba(0, 0, 0, 0.55);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+body {
+  font-family: var(--font-sans);
+  background: #0f172a;
+  color: var(--ink);
+  line-height: 1.65;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scroll Progress Bar */
+#bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #ff9933, var(--primary));
+  z-index: 100;
+  width: 0%;
+  transition: width 0.08s linear;
+}
+
+/* Background Cross-Fade Slider Container */
+#bg-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.bg-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.45) 50%, rgba(15, 23, 42, 0.70) 100%);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+}
+
+/* Three.js 3D Canvas Layer */
+canvas#c {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Top Announcement */
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: var(--navy);
+  color: #fff;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+.announcement-bar a { color: #ffe899; text-decoration: none; font-weight: 600; margin-left: 6px; }
+.announcement-bar a:hover { text-decoration: underline; }
+.announcement-contacts { display: flex; gap: 16px; align-items: center; }
+
+/* Sticky Main Navigation (Kage ThreeUI Pill Style) */
+nav {
+  position: fixed;
+  top: 32px;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  background: var(--card-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  transition: all 0.25s ease;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+.brand-pill {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-style: italic;
+  font-weight: 400;
+  background: var(--card);
+  padding: 5px 16px;
+  border-radius: 99px;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.brand-sub {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 7px 12px;
+  border-radius: 99px;
+  transition: all 0.2s ease;
+}
+.nav-links a:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid var(--border);
+  transition: all 0.2s;
+}
+.nav-btn-call:hover { border-color: var(--primary); color: var(--primary); }
+
+.nav-btn-apply {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 99px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 14px var(--primary-glow);
+  transition: transform 0.2s, background 0.2s;
+}
+.nav-btn-apply:hover { background: var(--primary-hover); transform: translateY(-1px); }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--ink);
+}
+
+/* Floating 3D Waypoint HUD */
+#hud-waypoint {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 20;
+  background: var(--card-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 9px 18px;
+  border-radius: 99px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#hud-waypoint .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(216, 50, 42, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(216, 50, 42, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(216, 50, 42, 0); }
+}
+
+.hud-tour-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 20;
+  background: var(--card-glass);
+  backdrop-filter: blur(12px);
+  padding: 9px 16px;
+  border-radius: 99px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.hud-tour-toggle:hover { background: var(--card); }
+
+/* Main Section Layout */
+main {
+  position: relative;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+body.tour-focus main {
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 6vw 70px;
+}
+section.r {
+  justify-content: flex-end;
+}
+section.center {
+  justify-content: center;
+}
+
+/* Hero Section: 2-Column Split (Welcome + Registration on Front Page) */
+.hero-split-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card Styles */
+.card {
+  max-width: 530px;
+  width: 100%;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 30px 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--card-border);
+  border-top: 5px solid var(--primary);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px rgba(15, 25, 55, 0.26);
+}
+.card.wide {
+  max-width: 700px;
+}
+
+/* Hero Specific Card Adjustments */
+.hero-left-card {
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hero-reg-card {
+  max-width: none;
+  background: var(--card);
+  border-top-color: var(--primary);
+  box-shadow: 0 20px 50px rgba(216, 50, 42, 0.18), var(--shadow);
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+/* Headings in Instrument Serif */
+h1, h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.08;
+  margin: 6px 0 12px;
+  color: var(--ink);
+}
+h1 { font-size: clamp(34px, 5vw, 48px); }
+h2 { font-size: clamp(28px, 4vw, 40px); }
+h3 {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 12px 0 6px;
+}
+
+p {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--muted);
+  margin-bottom: 14px;
+  font-weight: 300;
+}
+
+ul {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+  padding-left: 20px;
+  margin: 0 0 16px;
+  font-weight: 300;
+}
+li b { color: var(--ink); font-weight: 600; }
+
+/* Real School Photos Styling */
+.photo-frame {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin: 0 0 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+  background: #000;
+}
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 0.4s ease;
+}
+.photo-frame:hover img {
+  transform: scale(1.03);
+}
+.photo-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 99px;
+  letter-spacing: 0.02em;
+}
+.photo-zoom-hint {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 99px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.photo-frame:hover .photo-zoom-hint { opacity: 1; }
+
+/* Front Page Photo Showcase Carousel / Strip */
+.hero-photo-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+.hero-photo-thumb {
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  background: #000;
+}
+.hero-photo-thumb:hover, .hero-photo-thumb.active {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+.hero-photo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Metric / Stat Boxes */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+.stat-pill {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.6);
+  padding: 10px 4px;
+  border-radius: 12px;
+  text-align: center;
+}
+:root[data-theme="dark"] .stat-pill {
+  background: rgba(255, 255, 255, 0.04);
+}
+.stat-pill strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--primary);
+  font-weight: 400;
+}
+.stat-pill span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--primary-glow);
+  transition: all 0.2s ease;
+}
+.btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--primary-glow);
+}
+.btn.o {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+  box-shadow: none;
+}
+.btn.o:hover {
+  background: var(--navy);
+  color: #fff;
+  transform: translateY(-2px);
+}
+:root[data-theme="dark"] .btn.o {
+  color: #fff;
+  border-color: #fff;
+}
+:root[data-theme="dark"] .btn.o:hover {
+  background: #fff;
+  color: var(--navy);
+}
+
+.btn.wa {
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+.btn.wa:hover {
+  background: #20ba59;
+}
+
+/* Registration Form Specifics */
+.reg-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0;
+}
+.reg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.reg-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.reg-field input,
+.reg-field select {
+  font-family: inherit;
+  font-size: 13.5px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+:root[data-theme="dark"] .reg-field input,
+:root[data-theme="dark"] .reg-field select {
+  background: rgba(20, 26, 48, 0.85);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.reg-field input:focus,
+.reg-field select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* Dual Photo Grid in Inner Cards */
+.photo-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.photo-dual-grid .photo-frame {
+  margin: 0;
+}
+.photo-dual-grid .photo-frame img {
+  height: 150px;
+}
+
+/* Alumni Cards */
+.alum {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+.alum div {
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.6);
+}
+:root[data-theme="dark"] .alum div {
+  background: rgba(20, 26, 48, 0.6);
+}
+.alum strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--ink);
+  font-weight: 400;
+}
+.alum span {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+.alum em {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12.5px;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* Toppers & Scooty Awards */
+.scooty-banner {
+  background: var(--gold-bg);
+  border: 1.5px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.scooty-banner .icon { font-size: 26px; }
+.scooty-banner h4 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: #925805;
+  font-weight: 400;
+}
+:root[data-theme="dark"] .scooty-banner h4 { color: #f5c46b; }
+.scooty-banner p { font-size: 12.5px; color: var(--muted); margin: 0; }
+
+.topper-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.topper-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(27, 35, 64, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.topper-item .name { font-weight: 600; color: var(--ink); }
+.topper-item .score {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  color: var(--primary);
+  font-weight: 400;
+}
+
+/* Facilities Feature Grid */
+.facilities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+.facility-pill {
+  padding: 10px 12px;
+  background: rgba(27, 35, 64, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.facility-pill h4 {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.facility-pill p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Lightbox Modal */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px;
+}
+#lightbox.active { display: flex; }
+#lightbox img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  object-fit: contain;
+}
+#lightbox-caption {
+  color: #fff;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+#lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 34px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Footer */
+footer {
+  position: relative;
+  z-index: 10;
+  background: var(--navy);
+  color: #fff;
+  padding: 50px 6vw 30px;
+  border-top: 4px solid var(--primary);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.footer-grid h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.footer-grid p { color: #c4d0ec; font-size: 13.5px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 6px; }
+.footer-links a { color: #c4d0ec; text-decoration: none; font-size: 13.5px; }
+.footer-links a:hover { color: #fff; text-decoration: underline; }
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: #9cb1df;
+}
+
+/* Mobile Responsive Drawer */
+.mobile-drawer {
+  position: fixed;
+  top: 76px;
+  left: 0;
+  right: 0;
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  padding: 18px 24px;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid var(--primary);
+  z-index: 24;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+.mobile-drawer.open { display: flex; }
+.mobile-drawer a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.mobile-fab-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  padding: 10px 16px;
+  z-index: 28;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+  justify-content: space-around;
+  gap: 8px;
+}
+
+@media (max-width: 960px) {
+  .hero-split-grid { grid-template-columns: 1fr; gap: 20px; }
+  .nav-links, .nav-btn-call { display: none; }
+  .hamburger { display: block; }
+  .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .mobile-fab-bar { display: flex; }
+  section { padding-bottom: 90px; }
+  #hud-waypoint { bottom: 68px; }
+  .hud-tour-toggle { bottom: 68px; }
+}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+
+<!-- Background Slides for Dynamic Scroll Transition -->
+<div id="bg-container">
+  <!-- Slide 0: Front Page School Entrance & Campus -->
+  <div class="bg-slide active" style="background-image: url('images/school_photo_1.jpg');"></div>
+  <!-- Slide 1: Morning Assembly & Prayer Grounds -->
+  <div class="bg-slide" style="background-image: url('images/school_photo_2.jpg');"></div>
+  <!-- Slide 2: Active Classrooms & Academic Instruction -->
+  <div class="bg-slide" style="background-image: url('images/school_photo_3.jpg');"></div>
+  <!-- Slide 3: Results & Scooty Prize Distribution -->
+  <div class="bg-slide" style="background-image: url('images/svm1_140s.jpg');"></div>
+  <!-- Slide 4: Sports Meet & 400m Athletics Track -->
+  <div class="bg-slide" style="background-image: url('images/school_photo_4.jpg');"></div>
+  <!-- Slide 5: Alumni & Student Celebrations -->
+  <div class="bg-slide" style="background-image: url('images/svm1_165s.jpg');"></div>
+  <!-- Slide 6: School Leadership & Disciplined Batches -->
+  <div class="bg-slide" style="background-image: url('images/svm2_18s.jpg');"></div>
+  <!-- Slide 7: Campus Front Office & Visiting Desk -->
+  <div class="bg-slide" style="background-image: url('school_building.jpg');"></div>
+  <div class="bg-overlay"></div>
+</div>
+
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+  <div>
+    <span>📢 Admissions Open for 2026–27 · 100% Board Pass Results</span>
+    <a href="#register-front">Register on Front Page &rarr;</a>
+  </div>
+  <div class="announcement-contacts">
+    <span>📍 Kharak Jatan (Rohtak)</span>
+    <span>📞 <a href="tel:+919812366602" style="color:#fff;text-decoration:none;">98123 66602</a></span>
+  </div>
+</div>
+
+<!-- Floating Pill Navigation (Kage ThreeUI Style) -->
+<nav>
+  <a href="#" class="brand">
+    <div class="brand-pill">S.V.M.</div>
+    <div>
+      <b style="font-size:15px;font-weight:600;display:block;line-height:1.1;">S.V.M. Public School</b>
+      <span class="brand-sub">Kharak Jatan · Estd. & Recognised</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about">Home</a></li>
+    <li><a href="#register-front">Registration</a></li>
+    <li><a href="#tour">3D Campus</a></li>
+    <li><a href="#academics">Academics</a></li>
+    <li><a href="#results">Toppers</a></li>
+    <li><a href="#facilities">Facilities</a></li>
+    <li><a href="#alumni">Alumni</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <a href="tel:+919812366602" class="nav-btn-call">Call 98123 66602</a>
+    <a href="#register-front" class="nav-btn-apply">Apply 2026–27</a>
+    <button class="hamburger" id="menu-btn" aria-label="Toggle Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <a href="#about" class="m-link">Home & Overview</a>
+  <a href="#register-front" class="m-link" style="color:var(--primary);font-weight:600;">Registration Form (Front Page)</a>
+  <a href="#tour" class="m-link">3D Campus Walkthrough</a>
+  <a href="#academics" class="m-link">Academic Programs</a>
+  <a href="#results" class="m-link">Board Results & Scooty Awards</a>
+  <a href="#facilities" class="m-link">Laboratories & Sports</a>
+  <a href="#alumni" class="m-link">Alumni (NEET/NIT/Navy)</a>
+  <a href="#leadership" class="m-link">Leadership Team</a>
+  <a href="#contact" class="m-link">Contact & Location</a>
+</div>
+
+<!-- 3D Waypoint HUD -->
+<div id="hud-waypoint">
+  <span class="dot"></span>
+  <span id="waypoint-text">📍 Welcome · Campus Entrance Gate</span>
+</div>
+
+<!-- 3D Full View Toggle -->
+<button class="hud-tour-toggle" id="tour-toggle" title="Toggle 3D View">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+  <span>Full 3D View</span>
+</button>
+
+<!-- Three.js Canvas (Correctly Rendered in Fixed Context) -->
+<canvas id="c"></canvas>
+
+<!-- Scrollable Web Content -->
+<main>
+
+  <!-- SECTION 1: FRONT PAGE (HERO + REGISTRATION RIGHT ON FRONT PAGE) -->
+  <section id="about" style="padding-top:120px;">
+    <div class="hero-split-grid">
+      
+      <!-- Left Hero Card: Welcome & Real School Photos -->
+      <div class="card hero-left-card">
+        <div>
+          <div class="tag">Permanently Recognised · Vill. Kharak Jatan</div>
+          <h1>The School of Your Dreams</h1>
+          <p><b>Saraswati Vidya Mandir Public School.</b> Quality, a promise, a tradition. Empowering students with academic mastery, moral discipline, and world-class mentorship.</p>
+
+          <!-- Featured Real Photo from Updated Set -->
+          <div class="photo-frame" onclick="openLightbox('images/school_photo_1.jpg', 'S.V.M. Public School Campus & Main Gate, Kharak Jatan')">
+            <img id="hero-main-photo" alt="S.V.M. Public School Campus" src="images/school_photo_1.jpg">
+            <span class="photo-badge">📷 Real Campus · Kharak Jatan</span>
+            <span class="photo-zoom-hint">🔍 Zoom</span>
+          </div>
+
+          <!-- Thumbnails of User's Updated Photos -->
+          <div class="hero-photo-strip">
+            <div class="hero-photo-thumb active" onclick="switchHeroPhoto('images/school_photo_1.jpg', this)">
+              <img src="images/school_photo_1.jpg" alt="Campus entrance">
+            </div>
+            <div class="hero-photo-thumb" onclick="switchHeroPhoto('images/school_photo_2.jpg', this)">
+              <img src="images/school_photo_2.jpg" alt="School students & prayer">
+            </div>
+            <div class="hero-photo-thumb" onclick="switchHeroPhoto('images/school_photo_3.jpg', this)">
+              <img src="images/school_photo_3.jpg" alt="Classrooms & learning">
+            </div>
+            <div class="hero-photo-thumb" onclick="switchHeroPhoto('images/school_photo_4.jpg', this)">
+              <img src="images/school_photo_4.jpg" alt="Sports & campus grounds">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="stat-row">
+            <div class="stat-pill">
+              <strong>100%</strong>
+              <span>Pass Rate</span>
+            </div>
+            <div class="stat-pill">
+              <strong>3</strong>
+              <span>Scooties</span>
+            </div>
+            <div class="stat-pill">
+              <strong>Top</strong>
+              <span>NEET/NIT</span>
+            </div>
+            <div class="stat-pill">
+              <strong>I–XII</strong>
+              <span>All Streams</span>
+            </div>
+          </div>
+          <p style="font-size:13px;color:var(--muted);margin:0;">👇 <i>Slide down to walk through the 3D campus & watch background photos transition.</i></p>
+        </div>
+      </div>
+
+      <!-- Right Hero Card: Registration Form on Front Page -->
+      <div class="card hero-reg-card" id="register-front">
+        <div class="tag">Admissions Open 2026–27</div>
+        <h2>Register Your Child</h2>
+        <p>Pre-Primary (Nursery) to Senior Secondary (Class XII). Submit this quick registration to reserve a seat and connect instantly with our principal:</p>
+
+        <form id="front-registration-form" onsubmit="handleFrontRegistration(event)">
+          <div class="reg-form-fields">
+            <div class="reg-field">
+              <label for="front-student-name">Student Full Name *</label>
+              <input type="text" id="front-student-name" placeholder="e.g. Aryan Sharma" required>
+            </div>
+
+            <div class="reg-field">
+              <label for="front-admission-class">Class Seeking Admission *</label>
+              <select id="front-admission-class" required>
+                <option value="">-- Select Class --</option>
+                <option value="Nursery">Nursery</option>
+                <option value="LKG / UKG">LKG / UKG</option>
+                <option value="Class I - V (Primary)">Class I - V (Primary Wing)</option>
+                <option value="Class VI - VIII (Middle)">Class VI - VIII (Middle Wing)</option>
+                <option value="Class IX - X (Secondary)">Class IX - X (Board Preparation)</option>
+                <option value="Class XI - XII (Medical / NEET)">Class XI - XII (Medical / NEET)</option>
+                <option value="Class XI - XII (Non-Med / JEE)">Class XI - XII (Non-Medical / JEE)</option>
+                <option value="Class XI - XII (Commerce)">Class XI - XII (Commerce Stream)</option>
+                <option value="Class XI - XII (Arts / Humanities)">Class XI - XII (Humanities / Arts)</option>
+              </select>
+            </div>
+
+            <div class="reg-field">
+              <label for="front-parent-phone">Parent / Guardian Mobile Number *</label>
+              <input type="tel" id="front-parent-phone" placeholder="e.g. 9812345678" required>
+            </div>
+
+            <div class="reg-field">
+              <label for="front-village-area">Village / Town / Address *</label>
+              <input type="text" id="front-village-area" placeholder="e.g. Kharak Jatan / Kalanaur" required>
+            </div>
+          </div>
+
+          <div class="btn-group" style="flex-direction:column;gap:10px;">
+            <button type="submit" class="btn wa" style="width:100%;justify-content:center;padding:12px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.697c.969.529 1.761.812 2.806.812 3.182 0 5.769-2.587 5.77-5.767 0-3.18-2.587-5.766-5.77-5.766zm9.969 5.766c0 5.514-4.486 10-10 10-1.758 0-3.411-.458-4.856-1.258l-5.144 1.32 1.348-4.918c-.886-1.504-1.348-3.238-1.348-5.144 0-5.514 4.486-10 10-10s10 4.486 10 10z"/></svg>
+              Send WhatsApp Registration
+            </button>
+            <div style="display:flex;gap:8px;">
+              <a class="btn o" href="tel:+919812366602" style="flex:1;justify-content:center;font-size:13px;padding:9px;">Call 98123 66602</a>
+              <a class="btn o" href="tel:+919034744702" style="flex:1;justify-content:center;font-size:13px;padding:9px;">Principal Desk</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 2: 3D CAMPUS TOUR & MORNING ASSEMBLY (SLIDE DOWN 1) -->
+  <section class="r" id="tour">
+    <div class="card">
+      <div class="photo-frame" onclick="openLightbox('images/school_photo_2.jpg', 'Morning Assembly & Prayer Gathering at S.V.M. Public School')">
+        <img alt="Students at morning prayer and assembly" src="images/school_photo_2.jpg">
+        <span class="photo-badge">📷 Morning Assembly & Prayer Ground</span>
+        <span class="photo-zoom-hint">🔍 Zoom</span>
+      </div>
+      <div class="tag">3D Interactive Tour</div>
+      <h2>Learn, Play and Grow Here</h2>
+      <p>As you slide down, our 3D model takes you through the morning assembly, where students gather in disciplined rows under the national tricolor.</p>
+      <ul>
+        <li><b>Prayer Ground:</b> Daily assembly nurturing moral values & national pride</li>
+        <li><b>Tricolor Flagpole:</b> Patriotic assemblies and national celebrations</li>
+        <li><b>Science & Lab Wings:</b> Multi-room experimental setups</li>
+        <li><b>Sports Grounds:</b> 400m race track and team sports field</li>
+      </ul>
+      <p style="font-size:12.5px;color:var(--muted);"><i>Click "Full 3D View" at the bottom-right anytime to enjoy the 3D flyover without cards.</i></p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: ACADEMIC PROGRAMS & CLASSROOM PHOTOS (SLIDE DOWN 2) -->
+  <section id="academics">
+    <div class="card">
+      <div class="photo-dual-grid">
+        <div class="photo-frame" onclick="openLightbox('images/school_photo_3.jpg', 'Active Classroom Learning & Mentorship')">
+          <img alt="Classroom learning at SVM Public School" src="images/school_photo_3.jpg">
+          <span class="photo-badge">📷 Classroom Instruction</span>
+        </div>
+        <div class="photo-frame" onclick="openLightbox('images/svm1_55s.jpg', 'Dedicated Teacher Guidance')">
+          <img alt="Dedicated Teacher Guidance" src="images/svm1_55s.jpg">
+          <span class="photo-badge">📷 Teacher Guidance</span>
+        </div>
+      </div>
+      <div class="tag">Academic Programs</div>
+      <h2>Foundations for Life</h2>
+      <p>Structured academic pathways from early childhood discovery to higher-secondary board examination mastery:</p>
+      <ul>
+        <li><b>Primary Wing (I–V):</b> Foundational numeracy, language immersion, and curiosity</li>
+        <li><b>Middle Wing (VI–VIII):</b> Analytical thinking, laboratory science, and computer foundations</li>
+        <li><b>Senior Wing (IX–XII):</b> Rigorous board coaching in <b>Science (Medical & Non-Med), Commerce, and Arts</b> with NEET/JEE/NDA foundation</li>
+      </ul>
+      <a class="btn" href="#register-front">Register on Front Page &uarr;</a>
+    </div>
+  </section>
+
+  <!-- SECTION 4: RESULTS, SCOOTY & BICYCLE AWARDS (SLIDE DOWN 3) -->
+  <section class="r" id="results">
+    <div class="card">
+      <div class="photo-frame" onclick="openLightbox('images/svm1_140s.jpg', 'Class 10 Toppers Honoured with Scooties & Bicycles at Annual Function')">
+        <img alt="Class 10 toppers awarded scooties and bicycles" src="images/svm1_140s.jpg">
+        <span class="photo-badge">📷 Annual Prize Distribution & Scooty Honors</span>
+        <span class="photo-zoom-hint">🔍 Zoom</span>
+      </div>
+      <div class="tag">Results & Awards</div>
+      <h2>We Believe in Hard Work</h2>
+      <p>Our students consistently top at the <b>block level</b>, and we deliver <b>100% passing results</b>. To celebrate excellence, our Class 10 school toppers are honoured with <b>Scooties</b>:</p>
+
+      <div class="scooty-banner">
+        <div class="icon">🛵</div>
+        <div>
+          <h4>Class 10 Toppers Honoured with Scooties</h4>
+          <p>Proud tradition of S.V.M. Public School celebrating hard work.</p>
+        </div>
+      </div>
+
+      <ul class="topper-list">
+        <li class="topper-item">
+          <span class="name">🛵 Sushil (Session 2022–23)</span>
+          <span class="score">489 / 500</span>
+        </li>
+        <li class="topper-item">
+          <span class="name">🛵 Riya (Session 2023–24)</span>
+          <span class="score">490 / 500</span>
+        </li>
+        <li class="topper-item">
+          <span class="name">🛵 Bhavika (Session 2024–25)</span>
+          <span class="score">490 / 500</span>
+        </li>
+      </ul>
+
+      <p style="font-size:13.5px;margin-top:10px;">🚲 <i>All students scoring above 90% are honoured with brand-new <b>bicycles</b> at our annual prize ceremony.</i></p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: CAMPUS FACILITIES & SPORTS (SLIDE DOWN 4) -->
+  <section id="facilities">
+    <div class="card wide">
+      <div class="photo-dual-grid">
+        <div class="photo-frame" onclick="openLightbox('images/school_photo_4.jpg', 'Campus Sports Ground & Outdoor Activity')">
+          <img alt="Campus sports ground" src="images/school_photo_4.jpg">
+          <span class="photo-badge">📷 Sports & Outdoor Ground</span>
+        </div>
+        <div class="photo-frame" onclick="openLightbox('images/svm1_80s.jpg', 'Sports Day and 400m Athletics Track')">
+          <img alt="Sports day on athletic track" src="images/svm1_80s.jpg">
+          <span class="photo-badge">📷 400m Athletics Track</span>
+        </div>
+      </div>
+      <div class="tag">Campus Infrastructure</div>
+      <h2>Built for Curiosity & Health</h2>
+      <p>Dedicated facilities designed to inspire academic mastery, athletic vigor, and complete safety:</p>
+
+      <div class="facilities-grid">
+        <div class="facility-pill">
+          <h4>Physics, Chemistry & Bio Labs</h4>
+          <p>Hands-on experimental stations for practical discovery.</p>
+        </div>
+        <div class="facility-pill">
+          <h4>Smart Computer Lab</h4>
+          <p>Digital workstations with internet and IT literacy.</p>
+        </div>
+        <div class="facility-pill">
+          <h4>Library & Reading Room</h4>
+          <p>Extensive curriculum, reference books, and magazines.</p>
+        </div>
+        <div class="facility-pill">
+          <h4>Sports Ground & 400m Track</h4>
+          <p>Athletics, cricket, volleyball, kabaddi, and yoga.</p>
+        </div>
+        <div class="facility-pill">
+          <h4>Safe Bus Fleet</h4>
+          <p>Covering Kharak Jatan, Kalanaur, and rural Rohtak routes.</p>
+        </div>
+        <div class="facility-pill">
+          <h4>Safety & Pure RO Water</h4>
+          <p>24/7 CCTV surveillance, purified water, and first-aid care.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: ALUMNI SUCCESS (SLIDE DOWN 5) -->
+  <section class="r" id="alumni">
+    <div class="card">
+      <div class="photo-frame" onclick="openLightbox('images/svm1_165s.jpg', 'Student Smiles and Joyful Campus Spirit')">
+        <img alt="Student celebrations at SVM Public School" src="images/svm1_165s.jpg">
+        <span class="photo-badge">📷 Student Life & Celebrations</span>
+        <span class="photo-zoom-hint">🔍 Zoom</span>
+      </div>
+      <div class="tag">Our Alumni</div>
+      <h2>Where Our Students Go</h2>
+      <p>From our classrooms in Kharak Jatan to premier medical colleges, national engineering institutes, and the Indian armed forces:</p>
+
+      <div class="alum">
+        <div>
+          <strong>NEET Qualified</strong>
+          <span>PGIMS Rohtak</span>
+          <em>Tanisha</em>
+        </div>
+        <div>
+          <strong>NIT Rourkela</strong>
+          <span>Engineering</span>
+          <em>Shilak</em>
+        </div>
+        <div>
+          <strong>NIT Uttarakhand</strong>
+          <span>Engineering</span>
+          <em>Navneet</em>
+        </div>
+        <div>
+          <strong>Indian Navy</strong>
+          <span>Defence Service</span>
+          <em>Sachin</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: LEADERSHIP & FACULTY (SLIDE DOWN 6) -->
+  <section id="leadership">
+    <div class="card">
+      <div class="photo-frame" onclick="openLightbox('images/svm2_18s.jpg', 'Disciplined Student Formation & Assembly Mentorship')">
+        <img alt="Disciplined student formation" src="images/svm2_18s.jpg">
+        <span class="photo-badge">📷 Campus Discipline & Mentorship</span>
+        <span class="photo-zoom-hint">🔍 Zoom</span>
+      </div>
+      <div class="tag">Leadership</div>
+      <h2>Meet the Team</h2>
+      <p>Under experienced leadership, S.V.M. Public School combines traditional cultural values with modern academic rigor:</p>
+      <ul>
+        <li><b>Vijay Khatri</b>, Managing Director</li>
+        <li><b>Satyawan Sharma</b>, Director (M.Sc., M.Ed., LL.B.)</li>
+        <li><b>Rekha Dalal</b>, Principal (M.A., B.Ed.)</li>
+      </ul>
+      <p style="font-size:14px;margin-top:12px;">
+        <b>Direct Line:</b> <a href="tel:+919812366602" style="color:var(--primary);text-decoration:none;">98123 66602</a><br>
+        <b>Principal Desk:</b> <a href="tel:+919034744702" style="color:var(--navy);text-decoration:none;">90347 44702</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 8: CONTACT, VISIT US & GOOGLE MAPS (SLIDE DOWN 7) -->
+  <section class="r" id="contact">
+    <div class="card">
+      <div class="photo-frame" onclick="openLightbox('school_building.jpg', 'S.V.M. Public School Building, Kharak Jatan')">
+        <img alt="S.V.M. Public School building" src="school_building.jpg">
+        <span class="photo-badge">📷 School Building & Campus</span>
+        <span class="photo-zoom-hint">🔍 Zoom</span>
+      </div>
+      <div class="tag">Contact & Visit Campus</div>
+      <h2>Come and See It in Person</h2>
+      <p><b>Address:</b> S.V.M. Public School, Village Kharak Jatan, Tehsil Kalanaur, Dist. Rohtak, Haryana, India</p>
+      <p><b>Office Hours:</b> Monday–Saturday: 8:00 AM – 2:00 PM</p>
+      <div class="btn-group">
+        <a class="btn" href="tel:+919812366602">Call Main Office</a>
+        <a class="btn o" href="https://www.google.com/maps/search/S.V.M.+Public+School+Kharak+Jatan+Rohtak" target="_blank" rel="noopener">View on Google Maps</a>
+        <a class="btn o" href="https://www.instagram.com/svmschoolkharakjatan/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Lightbox Modal for Photo Inspection -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+  <img id="lightbox-img" src="" alt="Enlarged school photo">
+  <div id="lightbox-caption"></div>
+</div>
+
+<!-- Modern Academic Footer -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>S.V.M. Public School</h3>
+      <p><b>Saraswati Vidya Mandir Public School</b>, Vill. Kharak Jatan (Rohtak), Haryana.<br>
+      Permanently recognised, dedicated to quality, discipline, and character building.</p>
+      <p style="margin-top:10px;color:#ffe899;"><i>"Quality, a promise, a tradition."</i></p>
+    </div>
+
+    <div>
+      <h3>Quick Navigation</h3>
+      <ul class="footer-links">
+        <li><a href="#about">Home</a></li>
+        <li><a href="#register-front">Front Registration Form</a></li>
+        <li><a href="#tour">3D Virtual Tour</a></li>
+        <li><a href="#academics">Academic Programs</a></li>
+        <li><a href="#results">Results & Scooty Awards</a></li>
+        <li><a href="#alumni">Alumni Placements</a></li>
+        <li><a href="#contact">Campus Location</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Visit Campus</h3>
+      <p><b>Address:</b> Vill. Kharak Jatan, Tehsil Kalanaur, Dist. Rohtak, Haryana</p>
+      <p><b>Timings:</b> Mon–Sat: 8:00 AM – 2:00 PM</p>
+      <p><b>Director:</b> +91 98123 66602<br>
+      <b>Principal:</b> +91 90347 44702</p>
+      <p><b>Instagram:</b> <a href="https://www.instagram.com/svmschoolkharakjatan/" target="_blank" rel="noopener" style="color:#ffe899;">@svmschoolkharakjatan</a></p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>&copy; 2026 S.V.M. Public School, Kharak Jatan. All Rights Reserved.</div>
+    <div>ThreeUI Kage Style · Real Campus Photography Experience</div>
+  </div>
+</footer>
+
+<!-- Mobile Floating Actions -->
+<div class="mobile-fab-bar">
+  <a href="tel:+919812366602" class="btn" style="padding:8px 14px;font-size:12.5px;">📞 Call Campus</a>
+  <a href="https://wa.me/919812366602?text=Hello%20SVM%20Public%20School,%20I%20would%20like%20to%20inquire%20about%20admission" target="_blank" rel="noopener" class="btn wa" style="padding:8px 14px;font-size:12.5px;">💬 WhatsApp</a>
+  <a href="#register-front" class="btn o" style="padding:8px 14px;font-size:12.5px;">Register Now</a>
+</div>
+
+<!-- Three.js 3D Engine -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  // Mobile drawer
+  var menuBtn = document.getElementById('menu-btn');
+  var drawer = document.getElementById('mobile-drawer');
+  if (menuBtn && drawer) {
+    menuBtn.addEventListener('click', function(){
+      drawer.classList.toggle('open');
+    });
+    document.querySelectorAll('.m-link').forEach(function(link){
+      link.addEventListener('click', function(){
+        drawer.classList.remove('open');
+      });
+    });
+  }
+
+  // 3D Tour focus toggle
+  var tourToggle = document.getElementById('tour-toggle');
+  if (tourToggle) {
+    tourToggle.addEventListener('click', function(){
+      document.body.classList.toggle('tour-focus');
+      var isFocus = document.body.classList.contains('tour-focus');
+      tourToggle.querySelector('span').textContent = isFocus ? 'Exit 3D View' : 'Full 3D View';
+    });
+  }
+
+  // Dynamic Background Image Transition On Scroll
+  var bgSlides = document.querySelectorAll('.bg-slide');
+  var sections = document.querySelectorAll('section');
+
+  function updateBackgroundOnScroll() {
+    var scrollPos = window.scrollY + window.innerHeight * 0.40;
+    var activeIdx = 0;
+    sections.forEach(function(sec, idx) {
+      if (scrollPos >= sec.offsetTop) {
+        activeIdx = idx;
+      }
+    });
+    bgSlides.forEach(function(slide, idx) {
+      if (idx === activeIdx) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', updateBackgroundOnScroll, { passive: true });
+  updateBackgroundOnScroll();
+
+  // Three.js 3D Campus Scene (Rendered directly into #c with transparent background)
+  if (typeof THREE === "undefined") return;
+
+  var canvasEl = document.getElementById('c');
+  var R = new THREE.WebGLRenderer({ canvas: canvasEl, antialias: true, alpha: true });
+  R.setPixelRatio(Math.min(devicePixelRatio, 2));
+  R.setSize(innerWidth, innerHeight);
+
+  var S = new THREE.Scene();
+  var C = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.1, 450);
+
+  // Soft ambient lighting that blends naturally with photo backgrounds
+  S.add(new THREE.HemisphereLight(0xffffff, 0x556677, 0.95));
+  var sun = new THREE.DirectionalLight(0xfff5e0, 0.85);
+  sun.position.set(30, 60, 40);
+  S.add(sun);
+
+  function M(c) { return new THREE.MeshLambertMaterial({ color: c }); }
+  function box(w, h, d, c, x, y, z) {
+    var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), M(c));
+    m.position.set(x, y + h / 2, z);
+    S.add(m);
+    return m;
+  }
+  function flat(w, d, c, x, z, y) {
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), M(c));
+    m.rotation.x = -Math.PI / 2;
+    m.position.set(x, y || 0, z);
+    S.add(m);
+    return m;
+  }
+
+  var WHITE = 0xf6f1ea, RED = 0xd8322a, BLUE = 0x3a86d8, WIN = 0x9fc8ea, YELLOW = 0xf4b400;
+
+  // Ground planes (subtle translucent green/path)
+  flat(500, 500, 0x8cc26a, 0, 0, 0);
+  flat(60, 60, 0xc9b7ae, 0, 36, 0.03);
+  flat(9, 30, 0xc9b7ae, 0, 70, 0.03);
+
+  // Main School Building
+  box(26, 10, 12, WHITE, 0, 0, 0);
+  box(27, 0.9, 13, RED, 0, 10, 0);
+  box(13, 9, 3.5, BLUE, 0, 0, 7.2);
+  box(14, 0.9, 4.2, RED, 0, 9, 7.2);
+  box(9, 0.7, 5, RED, 0, 4, 9.4);
+  box(0.7, 4, 0.7, WHITE, -4, 0, 11.6);
+  box(0.7, 4, 0.7, WHITE, 4, 0, 11.6);
+  box(3.4, 3.2, 0.3, 0x5a3b2e, 0, 0, 9.1);
+
+  // Wings: Labs & Library
+  [-1, 1].forEach(function(s) {
+    box(16, 8, 11, WHITE, s * 21, 0, -0.5);
+    box(17, 0.8, 12, RED, s * 21, 8, -0.5);
+    for (var i = 0; i < 4; i++) {
+      for (var j = 0; j < 2; j++) {
+        var w = new THREE.Mesh(new THREE.PlaneGeometry(2, 2.2), new THREE.MeshBasicMaterial({ color: WIN }));
+        w.position.set(s * 21 - 6 + i * 4, 2.6 + j * 3.3, 5.1);
+        S.add(w);
+      }
+    }
+    for (var i = 0; i < 4; i++) {
+      var w = new THREE.Mesh(new THREE.PlaneGeometry(2, 2.2), new THREE.MeshBasicMaterial({ color: WIN }));
+      w.position.set(-9 + i * 6, 2.8, 6.05);
+      if (s < 0) S.add(w);
+    }
+  });
+
+  // Entrance Gate & Boundary Walls
+  [-9, 9].forEach(function(x) { box(2, 6, 2, RED, x, 0, 88); });
+  box(20, 1.2, 2, RED, 0, 6, 88);
+  box(70, 2, 1, WHITE, -40, 0, 88);
+  box(70, 2, 1, WHITE, 40, 0, 88);
+
+  // School Bus
+  box(3.6, 2.6, 8.5, YELLOW, -15, 0, 78);
+  box(3.6, 0.4, 8.7, 0x111111, -15, 0.4, 78);
+  [-3, 1.5, 3].forEach(function(bz) {
+    var bw1 = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.4, 12), M(0x222222));
+    bw1.rotation.z = Math.PI / 2;
+    bw1.position.set(-17, 0.55, 78 + bz);
+    S.add(bw1);
+    var bw2 = bw1.clone();
+    bw2.position.set(-13, 0.55, 78 + bz);
+    S.add(bw2);
+  });
+  var busWin = new THREE.Mesh(new THREE.PlaneGeometry(7, 0.9), new THREE.MeshBasicMaterial({ color: 0x334466 }));
+  busWin.position.set(-16.85, 2, 78);
+  busWin.rotation.y = -Math.PI / 2;
+  S.add(busWin);
+
+  // Flagpole & National Tricolor
+  box(0.3, 16, 0.3, 0xdddddd, -20, 0, 14);
+  [0xff9933, 0xffffff, 0x138808].forEach(function(c, i) {
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 0.9), new THREE.MeshBasicMaterial({ color: c, side: THREE.DoubleSide }));
+    f.position.set(-18.3, 15.4 - i * 0.9, 14);
+    S.add(f);
+  });
+
+  // Morning Assembly: 120 Students
+  var st = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.35, 0.35, 1.6, 6), M(0x1a2350), 120),
+      d = new THREE.Object3D(),
+      q = 0;
+  for (var r = 0; r < 8; r++) {
+    for (var c = 0; c < 15; c++) {
+      d.position.set(-14 + c * 2, 0.8, 18 + r * 2.3);
+      d.updateMatrix();
+      st.setMatrixAt(q++, d.matrix);
+    }
+  }
+  S.add(st);
+
+  // Sports track & field
+  var tr = new THREE.Mesh(new THREE.RingGeometry(13, 19, 48), M(0xb5573a));
+  tr.rotation.x = -Math.PI / 2;
+  tr.scale.set(1.6, 1, 1);
+  tr.position.set(70, 0.05, 10);
+  S.add(tr);
+
+  var fd = new THREE.Mesh(new THREE.CircleGeometry(13, 48), M(0x5fae55));
+  fd.rotation.x = -Math.PI / 2;
+  fd.scale.set(1.6, 1, 1);
+  fd.position.set(70, 0.06, 10);
+  S.add(fd);
+
+  // Trees
+  for (var k = 0; k < 55; k++) {
+    var x = (Math.random() < 0.5 ? -1 : 1) * (34 + Math.random() * 50),
+        z = -40 + Math.random() * 140;
+    if (Math.abs(x - 70) < 35 && z > -12 && z < 32) continue;
+    var h = 2 + Math.random() * 2,
+        t = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.4, h, 6), M(0x6b4a2f));
+    t.position.set(x, h / 2, z);
+    S.add(t);
+    var l = new THREE.Mesh(new THREE.IcosahedronGeometry(1.8 + Math.random() * 1.4, 0), M(0x4f9a4a));
+    l.position.set(x, h + 1.6, z);
+    S.add(l);
+  }
+
+  // Floating Flower Petals
+  var N = 240, pos = new Float32Array(N * 3);
+  for (var n = 0; n < N; n++) {
+    pos[n * 3] = (Math.random() - 0.5) * 140;
+    pos[n * 3 + 1] = Math.random() * 25;
+    pos[n * 3 + 2] = 90 - Math.random() * 130;
+  }
+  var pg = new THREE.BufferGeometry();
+  pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  S.add(new THREE.Points(pg, new THREE.PointsMaterial({ color: 0xd8322a, size: 0.35 })));
+
+  // CatmullRom Camera Path
+  function V(a) { return new THREE.Vector3(a[0], a[1], a[2]); }
+  var cam = new THREE.CatmullRomCurve3([
+    [0, 5, 120],
+    [0, 4, 70],
+    [0, 6, 34],
+    [-26, 5, 24],
+    [30, 6, 34],
+    [52, 9, 34],
+    [24, 8, 30],
+    [0, 20, 62]
+  ].map(V));
+
+  var look = new THREE.CatmullRomCurve3([
+    [0, 7, 0],
+    [0, 7, 0],
+    [0, 6, 6],
+    [-18, 4, 0],
+    [60, 1, 10],
+    [70, 1, 10],
+    [0, 7, 4],
+    [0, 6, 0]
+  ].map(V));
+
+  var tgt = 0, cur = 0, bar = document.getElementById('bar'),
+      waypointText = document.getElementById('waypoint-text'),
+      calm = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  function updateHUD(p) {
+    if (!waypointText) return;
+    if (p < 0.14) {
+      waypointText.textContent = '📍 Welcome · Campus Entrance Gate';
+    } else if (p < 0.28) {
+      waypointText.textContent = '📍 Tree-Lined Pathway & Bus Bay';
+    } else if (p < 0.42) {
+      waypointText.textContent = '📍 Morning Assembly & Tricolor Flagpole';
+    } else if (p < 0.56) {
+      waypointText.textContent = '📍 Main Academic Block & Central Porch';
+    } else if (p < 0.70) {
+      waypointText.textContent = '📍 Science Laboratories & Library Wing';
+    } else if (p < 0.84) {
+      waypointText.textContent = '📍 Sports Ground & 400m Athletics Track';
+    } else {
+      waypointText.textContent = '📍 Aerial Campus Panorama & Admissions';
+    }
+  }
+
+  function sc() {
+    var m = document.documentElement.scrollHeight - innerHeight;
+    tgt = m > 0 ? Math.min(1, Math.max(0, scrollY / m)) : 0;
+  }
+  addEventListener('scroll', sc, { passive: true });
+  sc();
+
+  addEventListener('resize', function() {
+    R.setSize(innerWidth, innerHeight);
+    C.aspect = innerWidth / innerHeight;
+    C.updateProjectionMatrix();
+    sc();
+  });
+
+  function loop(t) {
+    cur = calm ? tgt : cur + (tgt - cur) * 0.06;
+    C.position.copy(cam.getPoint(cur));
+    C.lookAt(look.getPoint(cur));
+    if (bar) bar.style.width = (cur * 100) + '%';
+    updateHUD(cur);
+
+    if (!calm) {
+      var a = pg.attributes.position.array;
+      for (var i = 0; i < N; i++) {
+        a[i * 3 + 1] -= 0.02;
+        a[i * 3] += Math.sin(t * 0.001 + i) * 0.01;
+        if (a[i * 3 + 1] < 0) a[i * 3 + 1] = 25;
+      }
+      pg.attributes.position.needsUpdate = true;
+    }
+
+    R.render(S, C);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+
+// Front Photo Switcher
+function switchHeroPhoto(src, el) {
+  var mainPhoto = document.getElementById('hero-main-photo');
+  if (mainPhoto) mainPhoto.src = src;
+  document.querySelectorAll('.hero-photo-thumb').forEach(function(th){
+    th.classList.remove('active');
+  });
+  if (el) el.classList.add('active');
+}
+
+// Lightbox for Photos
+function openLightbox(src, caption) {
+  var lb = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  var cap = document.getElementById('lightbox-caption');
+  if (lb && img) {
+    img.src = src;
+    cap.textContent = caption || '';
+    lb.classList.add('active');
+  }
+}
+
+function closeLightbox() {
+  var lb = document.getElementById('lightbox');
+  if (lb) lb.classList.remove('active');
+}
+
+// Front Registration WhatsApp Form
+function handleFrontRegistration(e) {
+  e.preventDefault();
+  var studentName = document.getElementById('front-student-name').value.trim();
+  var admClass = document.getElementById('front-admission-class').value;
+  var phone = document.getElementById('front-parent-phone').value.trim();
+  var village = document.getElementById('front-village-area').value.trim();
+
+  if (!studentName || !admClass || !phone) {
+    alert('Please enter Student Name, Class, and Parent Mobile Number.');
+    return;
+  }
+
+  var msg = 'Hello S.V.M. Public School (Kharak Jatan),%0A%0A' +
+            '*Admission Registration (2026–27)*%0A' +
+            '• *Student Name:* ' + encodeURIComponent(studentName) + '%0A' +
+            '• *Class Applying For:* ' + encodeURIComponent(admClass) + '%0A' +
+            '• *Parent Contact:* ' + encodeURIComponent(phone) + '%0A' +
+            '• *Village / Area:* ' + encodeURIComponent(village || 'Not specified') + '%0A%0A' +
+            'Please reserve our seat and provide fee structure and documentation details.';
+
+  window.open('https://wa.me/919812366602?text=' + msg, '_blank');
+}
+</script>
+</body>
+</html>

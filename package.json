@@ -1,0 +1,14 @@
+{
+  "name": "svm-public-school",
+  "version": "1.0.0",
+  "description": "Official website for S.V.M. Public School, Kharak Jatan (Rohtak)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js"
+  },
+  "keywords": ["school", "threejs", "website"],
+  "author": "S.V.M. Public School",
+  "license": "ISC"
+}

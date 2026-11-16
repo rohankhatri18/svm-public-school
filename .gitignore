@@ -1,0 +1,12 @@
+# Large video files
+*.mp4
+*.mov
+
+# Temporary build / test artifacts
+test_reader
+*.bak
+extract_info.swift
+test.c
+
+# OS files
+.DS_Store
