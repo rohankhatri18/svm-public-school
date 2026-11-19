@@ -1,4 +1,4 @@
-# S.V.M. Public School, Kharak Jatan (Rohtak)
+# S.V.M Public School, Kharak Jatan (Rohtak)
 
 Official website for **Saraswati Vidya Mandir Public School**, Vill. Kharak Jatan, Dist. Rohtak, Haryana, India.
 

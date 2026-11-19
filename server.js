@@ -111,7 +111,7 @@ function serveFile(req, res, filePath, stats) {
 
 server.listen(PORT, () => {
   console.log('====================================================');
-  console.log('🏫 S.V.M. Public School - Web Server Running');
+  console.log('🏫 S.V.M Public School - Web Server Running');
   console.log(`🌐 Local URL:   http://localhost:${PORT}`);
   console.log(`📁 Serving:     ${PUBLIC_DIR}`);
   console.log('⚡ Video Streaming: HTTP 206 Range Enabled (MP4/WebM)');
