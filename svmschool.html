@@ -331,15 +331,285 @@ section.center {
   justify-content: center;
 }
 
-/* Hero Section: 2-Column Split (Welcome + Registration on Front Page) */
-.hero-split-grid {
+/* ThreeUI BestsellersBookShowcase Inspired 3-Card Showcase */
+.showcase-container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.showcase-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 4px;
+}
+
+.showcase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-glass);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.showcase-header h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 4px 0 8px;
+  text-shadow: 0 2px 14px rgba(255,255,255,0.7);
+}
+:root[data-theme="dark"] .showcase-header h1 {
+  text-shadow: 0 2px 16px rgba(0,0,0,0.85);
+}
+
+.showcase-header p {
+  font-size: clamp(14px, 1.6vw, 16.5px);
+  color: var(--muted);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Mobile Tabs Switcher */
+.showcase-tabs {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+}
+.showcase-tab {
+  background: var(--card-glass);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.showcase-tab:hover {
+  color: var(--ink);
+  background: var(--card);
+}
+.showcase-tab.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 14px var(--primary-glow);
+}
+
+/* 3-Card Grid */
+.showcase-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
   align-items: stretch;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+}
+
+.showcase-card {
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.showcase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 55px rgba(15, 25, 55, 0.26);
+}
+
+/* Top Border Accents */
+.card-about { border-top: 5px solid var(--primary); }
+.card-toppers { border-top: 5px solid var(--gold); }
+.card-reg { border-top: 5px solid #25d366; }
+
+/* Showcase Card Inner Typography */
+.showcase-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.tag-red { color: var(--primary); }
+.tag-gold { color: #b87c08; }
+.tag-green { color: #169b46; }
+
+.showcase-card h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(23px, 2.2vw, 30px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 2px 0 4px;
+  color: var(--ink);
+}
+
+.showcase-subtitle {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Media in Cards */
+.showcase-media {
+  position: relative;
+  width: 100%;
+  height: 175px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin: 0 0 12px;
+  cursor: pointer;
+  background: #0f172a;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.showcase-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.showcase-media:hover img {
+  transform: scale(1.04);
+}
+.showcase-badge-pill {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 99px;
+  letter-spacing: 0.02em;
+}
+.showcase-badge-zoom {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 10.5px;
+  padding: 3px 7px;
+  border-radius: 99px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.showcase-media:hover .showcase-badge-zoom {
+  opacity: 1;
+}
+
+/* Feature List Inside Card */
+.showcase-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.showcase-list li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 6px;
+}
+.showcase-list li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  color: var(--primary);
+  font-size: 16px;
+  line-height: 1;
+}
+.card-toppers .showcase-list li::before {
+  color: var(--gold);
+}
+.showcase-list li b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Stat Row in Card */
+.showcase-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin: 10px 0 12px;
+}
+.showcase-stat-box {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 4px;
+  text-align: center;
+}
+:root[data-theme="dark"] .showcase-stat-box {
+  background: rgba(255, 255, 255, 0.05);
+}
+.showcase-stat-box strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1;
+  color: var(--primary);
+  font-weight: 500;
+}
+.card-toppers .showcase-stat-box strong {
+  color: var(--gold);
+}
+.showcase-stat-box span {
+  display: block;
+  font-size: 10.5px;
+  color: var(--muted);
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+/* Card Action Bottom */
+.showcase-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-prev-btn, .mobile-next-btn {
+  display: none;
 }
 
 /* Card Styles */
@@ -363,20 +633,6 @@ section.center {
 }
 .card.wide {
   max-width: 700px;
-}
-
-/* Hero Specific Card Adjustments */
-.hero-left-card {
-  max-width: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.hero-reg-card {
-  max-width: none;
-  background: var(--card);
-  border-top-color: var(--primary);
-  box-shadow: 0 20px 50px rgba(216, 50, 42, 0.18), var(--shadow);
 }
 
 .tag {
@@ -879,6 +1135,36 @@ footer {
   gap: 8px;
 }
 
+/* Responsive adjustments for 3-Card Showcase on Tablets & Mobile */
+@media (max-width: 1040px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .showcase-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 4px 2px 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .showcase-tab {
+    padding: 8px 16px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .showcase-card {
+    display: none;
+  }
+  .showcase-card.active-tab {
+    display: flex;
+  }
+  .mobile-prev-btn, .mobile-next-btn {
+    display: inline-flex !important;
+  }
+}
+
 /* Mobile-First Responsive Breakpoint for Tablets and Phones */
 @media (max-width: 860px) {
   /* Announcement bar: single clean line */
@@ -956,9 +1242,29 @@ footer {
   .card.wide {
     max-width: 100%;
   }
-  .hero-split-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  /* ThreeUI BestsellersBookShowcase Mobile Layout */
+  .showcase-container {
+    padding: 0 4px;
+    gap: 14px;
+  }
+  .showcase-header h1 {
+    font-size: 26px;
+    line-height: 1.15;
+    margin: 4px 0 6px;
+  }
+  .showcase-header p {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .showcase-card {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+  .showcase-media {
+    height: 165px;
+  }
+  .showcase-card h2 {
+    font-size: 22px;
   }
 
   /* Typography scale on phones */
@@ -1145,8 +1451,8 @@ footer {
 
 <!-- Background Slides for Dynamic Scroll Transition -->
 <div id="bg-container">
-  <!-- Slide 0: Front Page School Entrance & Campus -->
-  <div class="bg-slide active" style="background-image: url('images/school_photo_1.jpg');"></div>
+  <!-- Slide 0: Front Page School Entrance & Building (Uploaded Real School Building) -->
+  <div class="bg-slide active" style="background-image: url('images/school_front_building.jpg');"></div>
   <!-- Slide 1: Morning Assembly & Prayer Grounds -->
   <div class="bg-slide" style="background-image: url('images/school_photo_2.jpg');"></div>
   <!-- Slide 2: Active Classrooms & Academic Instruction -->
@@ -1160,7 +1466,7 @@ footer {
   <!-- Slide 6: School Leadership & Disciplined Batches -->
   <div class="bg-slide" style="background-image: url('images/svm2_18s.jpg');"></div>
   <!-- Slide 7: Campus Front Office & Visiting Desk -->
-  <div class="bg-slide" style="background-image: url('school_building.jpg');"></div>
+  <div class="bg-slide" style="background-image: url('images/school_front_building.jpg');"></div>
   <div class="bg-overlay"></div>
 </div>
 
@@ -1187,11 +1493,11 @@ footer {
   </a>
 
   <ul class="nav-links">
-    <li><a href="#about">Home</a></li>
-    <li><a href="#register-front">Registration</a></li>
-    <li><a href="#tour">3D Campus</a></li>
+    <li><a href="#card-about">Campus</a></li>
+    <li><a href="#card-toppers">Toppers</a></li>
+    <li><a href="#register-front">Admission 2026–27</a></li>
+    <li><a href="#tour">3D Tour</a></li>
     <li><a href="#academics">Academics</a></li>
-    <li><a href="#results">Toppers</a></li>
     <li><a href="#facilities">Facilities</a></li>
     <li><a href="#alumni">Alumni</a></li>
     <li><a href="#leadership">Leadership</a></li>
@@ -1199,7 +1505,7 @@ footer {
 
   <div class="nav-actions">
     <a href="tel:+919812366602" class="nav-btn-call">Call 98123 66602</a>
-    <a href="#register-front" class="nav-btn-apply">Apply 2026–27</a>
+    <a href="#register-front" class="nav-btn-apply">Admission 2026–27</a>
     <button class="hamburger" id="menu-btn" aria-label="Toggle Menu">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -1208,11 +1514,12 @@ footer {
 
 <!-- Mobile Navigation Drawer -->
 <div class="mobile-drawer" id="mobile-drawer">
-  <a href="#about" class="m-link">Home & Overview</a>
-  <a href="#register-front" class="m-link" style="color:var(--primary);font-weight:600;">Registration Form (Front Page)</a>
+  <a href="#card-about" class="m-link">🏫 About S.V.M Public School</a>
+  <a href="#card-toppers" class="m-link">🏆 Toppers & Scooty Honors</a>
+  <a href="#register-front" class="m-link" style="color:var(--primary);font-weight:600;">✍️ Admission Form 2026–27</a>
   <a href="#tour" class="m-link">3D Campus Walkthrough</a>
   <a href="#academics" class="m-link">Academic Programs</a>
-  <a href="#results" class="m-link">Board Results & Scooty Awards</a>
+  <a href="#results" class="m-link">Board Results & Scooty Details</a>
   <a href="#facilities" class="m-link">Laboratories & Sports</a>
   <a href="#alumni" class="m-link">Alumni (NEET/NIT/Navy)</a>
   <a href="#leadership" class="m-link">Leadership Team</a>
@@ -1237,115 +1544,185 @@ footer {
 <!-- Scrollable Web Content -->
 <main>
 
-  <!-- SECTION 1: FRONT PAGE (HERO + REGISTRATION RIGHT ON FRONT PAGE) -->
-  <section id="about" style="padding-top:120px;">
-    <div class="hero-split-grid">
+  <!-- SECTION 1: FRONT PAGE (THREEUI BESTSELLERS 3-CARD SHOWCASE) -->
+  <section id="about" style="padding-top:110px; min-height: 100vh; display: flex; align-items: center;">
+    <div class="showcase-container">
       
-      <!-- Left Hero Card: Welcome & Real School Photos -->
-      <div class="card hero-left-card">
-        <div>
-          <div class="tag">Permanently Recognised · Vill. Kharak Jatan</div>
-          <h1>The School of Your Dreams</h1>
-          <p><b>Saraswati Vidya Mandir Public School.</b> Quality, a promise, a tradition. Empowering students with academic mastery, moral discipline, and world-class mentorship.</p>
-
-          <!-- Featured Real Photo from Updated Set -->
-          <div class="photo-frame" onclick="openLightbox('images/school_photo_1.jpg', 'S.V.M Public School Campus & Main Gate, Kharak Jatan')">
-            <img id="hero-main-photo" alt="S.V.M Public School Campus" src="images/school_photo_1.jpg">
-            <span class="photo-badge">📷 Real Campus · Kharak Jatan</span>
-            <span class="photo-zoom-hint">🔍 Zoom</span>
-          </div>
-
-          <!-- Thumbnails of User's Updated Photos -->
-          <div class="hero-photo-strip">
-            <div class="hero-photo-thumb active" onclick="switchHeroPhoto('images/school_photo_1.jpg', this)">
-              <img src="images/school_photo_1.jpg" alt="Campus entrance">
-            </div>
-            <div class="hero-photo-thumb" onclick="switchHeroPhoto('images/school_photo_2.jpg', this)">
-              <img src="images/school_photo_2.jpg" alt="School students & prayer">
-            </div>
-            <div class="hero-photo-thumb" onclick="switchHeroPhoto('images/school_photo_3.jpg', this)">
-              <img src="images/school_photo_3.jpg" alt="Classrooms & learning">
-            </div>
-            <div class="hero-photo-thumb" onclick="switchHeroPhoto('images/school_photo_4.jpg', this)">
-              <img src="images/school_photo_4.jpg" alt="Sports & campus grounds">
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="stat-row">
-            <div class="stat-pill">
-              <strong>100%</strong>
-              <span>Pass Rate</span>
-            </div>
-            <div class="stat-pill">
-              <strong>3</strong>
-              <span>Scooties</span>
-            </div>
-            <div class="stat-pill">
-              <strong>Top</strong>
-              <span>NEET/NIT</span>
-            </div>
-            <div class="stat-pill">
-              <strong>I–XII</strong>
-              <span>All Streams</span>
-            </div>
-          </div>
-          <p style="font-size:13px;color:var(--muted);margin:0;">👇 <i>Slide down to walk through the 3D campus & watch background photos transition.</i></p>
-        </div>
+      <!-- Showcase Top Header / Badge -->
+      <div class="showcase-header">
+        <div class="showcase-badge">✨ S.V.M Academic Showcase · Estd. & Recognised</div>
+        <h1>Quality, A Promise, A Tradition</h1>
+        <p>Explore our campus heritage, celebrate our block-topping achievers, and enroll for the 2026–27 session.</p>
       </div>
 
-      <!-- Right Hero Card: Registration Form on Front Page -->
-      <div class="card hero-reg-card" id="register-front">
-        <div class="tag">Admissions Open 2026–27</div>
-        <h2>Register Your Child</h2>
-        <p>Pre-Primary (Nursery) to Senior Secondary (Class XII). Submit this quick registration to reserve a seat and connect instantly with our principal:</p>
+      <!-- Mobile / Tablet Tab Switcher -->
+      <div class="showcase-tabs" id="showcase-tabs">
+        <button type="button" class="showcase-tab active" onclick="switchShowcaseTab(0)">🏫 1. About S.V.M</button>
+        <button type="button" class="showcase-tab" onclick="switchShowcaseTab(1)">🏆 2. Toppers</button>
+        <button type="button" class="showcase-tab" onclick="switchShowcaseTab(2)">✍️ 3. Register</button>
+      </div>
 
-        <form id="front-registration-form" onsubmit="handleFrontRegistration(event)">
-          <div class="reg-form-fields">
-            <div class="reg-field">
-              <label for="front-student-name">Student Full Name *</label>
-              <input type="text" id="front-student-name" placeholder="e.g. Aryan Sharma" required>
+      <!-- 3-Card Grid (Bestsellers Showcase) -->
+      <div class="showcase-grid" id="showcase-grid">
+        
+        <!-- CARD 1: ABOUT THE SCHOOL -->
+        <div class="showcase-card card-about active-tab" id="card-about">
+          <div>
+            <div class="showcase-tag tag-red">🏫 Heritage & Campus · Vill. Kharak Jatan</div>
+            <h2>S.V.M Public School</h2>
+            <div class="showcase-subtitle">“The School of Your Dreams · Permanently Recognised”</div>
+
+            <div class="showcase-media" onclick="openLightbox('images/school_front_building.jpg', 'S.V.M Public School Main Building, Kharak Jatan')">
+              <img src="images/school_front_building.jpg" alt="S.V.M Public School Building">
+              <span class="showcase-badge-pill">📷 Real Campus Front</span>
+              <span class="showcase-badge-zoom">🔍 Zoom</span>
             </div>
 
-            <div class="reg-field">
-              <label for="front-admission-class">Class Seeking Admission *</label>
-              <select id="front-admission-class" required>
-                <option value="">-- Select Class --</option>
-                <option value="Nursery">Nursery</option>
-                <option value="LKG / UKG">LKG / UKG</option>
-                <option value="Class I - V (Primary)">Class I - V (Primary Wing)</option>
-                <option value="Class VI - VIII (Middle)">Class VI - VIII (Middle Wing)</option>
-                <option value="Class IX - X (Secondary)">Class IX - X (Board Preparation)</option>
-                <option value="Class XI - XII (Medical / NEET)">Class XI - XII (Medical / NEET)</option>
-                <option value="Class XI - XII (Non-Med / JEE)">Class XI - XII (Non-Medical / JEE)</option>
-                <option value="Class XI - XII (Commerce)">Class XI - XII (Commerce Stream)</option>
-                <option value="Class XI - XII (Arts / Humanities)">Class XI - XII (Humanities / Arts)</option>
-              </select>
-            </div>
-
-            <div class="reg-field">
-              <label for="front-parent-phone">Parent / Guardian Mobile Number *</label>
-              <input type="tel" id="front-parent-phone" placeholder="e.g. 9812345678" required>
-            </div>
-
-            <div class="reg-field">
-              <label for="front-village-area">Village / Town / Address *</label>
-              <input type="text" id="front-village-area" placeholder="e.g. Kharak Jatan / Kalanaur" required>
-            </div>
+            <ul class="showcase-list">
+              <li><b>HBSE Affiliated:</b> Permanently recognised by Haryana Board for quality secondary & sr. sec. education.</li>
+              <li><b>Nursery to Class XII:</b> Science (Med/Non-Med), Commerce & Arts with mentorship.</li>
+              <li><b>Modern Infrastructure:</b> Equipped Physics, Chemistry, Biology & Computer Labs.</li>
+              <li><b>Safe Bus Fleet:</b> GPS & CCTV-enabled transport covering 15+ surrounding villages.</li>
+            </ul>
           </div>
 
-          <div class="btn-group" style="flex-direction:column;gap:10px;">
-            <button type="submit" class="btn wa" style="width:100%;justify-content:center;padding:12px;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.697c.969.529 1.761.812 2.806.812 3.182 0 5.769-2.587 5.77-5.767 0-3.18-2.587-5.766-5.77-5.766zm9.969 5.766c0 5.514-4.486 10-10 10-1.758 0-3.411-.458-4.856-1.258l-5.144 1.32 1.348-4.918c-.886-1.504-1.348-3.238-1.348-5.144 0-5.514 4.486-10 10-10s10 4.486 10 10z"/></svg>
-              Send WhatsApp Registration
-            </button>
-            <div style="display:flex;gap:8px;">
-              <a class="btn o" href="tel:+919812366602" style="flex:1;justify-content:center;font-size:13px;padding:9px;">Call 98123 66602</a>
-              <a class="btn o" href="tel:+919034744702" style="flex:1;justify-content:center;font-size:13px;padding:9px;">Principal Desk</a>
+          <div>
+            <div class="showcase-stats">
+              <div class="showcase-stat-box">
+                <strong>100%</strong>
+                <span>Pass Rate</span>
+              </div>
+              <div class="showcase-stat-box">
+                <strong>I–XII</strong>
+                <span>All Streams</span>
+              </div>
+              <div class="showcase-stat-box">
+                <strong>35+ Yrs</strong>
+                <span>Trust</span>
+              </div>
+            </div>
+
+            <div class="showcase-actions">
+              <a href="#tour" class="btn" style="width:100%;justify-content:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                Explore 3D Campus Tour
+              </a>
+              <div style="display:flex;gap:6px;">
+                <a href="tel:+919812366602" class="btn o" style="flex:1;justify-content:center;font-size:12.5px;padding:8px;">Call 98123 66602</a>
+                <button type="button" class="btn o mobile-next-btn" onclick="switchShowcaseTab(1)" style="flex:1;justify-content:center;font-size:12.5px;padding:8px;">Toppers →</button>
+              </div>
             </div>
           </div>
-        </form>
+        </div>
+
+        <!-- CARD 2: TOPPERS & SCOOTY AWARDS -->
+        <div class="showcase-card card-toppers" id="card-toppers">
+          <div>
+            <div class="showcase-tag tag-gold">🏆 Meritorious Honors · Board Results</div>
+            <h2>Block Toppers & Awards</h2>
+            <div class="showcase-subtitle">“Honouring extraordinary talent with Scooties & Bicycles”</div>
+
+            <div class="showcase-media" onclick="openLightbox('images/svm1_140s.jpg', 'Class 10 Toppers Honoured with Scooties & Bicycles at Annual Function')">
+              <img src="images/svm1_140s.jpg" alt="Class 10 Toppers Scooty Distribution">
+              <span class="showcase-badge-pill">🛵 Scooty & Cycle Honors</span>
+              <span class="showcase-badge-zoom">🔍 Zoom</span>
+            </div>
+
+            <ul class="showcase-list">
+              <li><b>Class 10 Block Toppers (Scooty Honorees):</b><br>
+                🥇 <b>Sushil</b> (2022–23): <b>489 / 500 (97.8%)</b><br>
+                🥇 <b>Riya</b> (2023–24): <b>490 / 500 (98.0%)</b><br>
+                🥇 <b>Bhavika</b> (2024–25): <b>490 / 500 (98.0%)</b>
+              </li>
+              <li><b>90%+ Scorers:</b> Honoured with brand-new Hero Bicycles and merit scholarships.</li>
+              <li><b>Alumni in Prestigious Institutes:</b> NEET (PGIMS Rohtak), NIT Rourkela, NIT Uttarakhand, and Indian Navy.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="showcase-stats">
+              <div class="showcase-stat-box">
+                <strong style="color:var(--gold);">3</strong>
+                <span>Scooties</span>
+              </div>
+              <div class="showcase-stat-box">
+                <strong style="color:var(--gold);">90%+</strong>
+                <span>Hero Cycles</span>
+              </div>
+              <div class="showcase-stat-box">
+                <strong style="color:var(--gold);">Top</strong>
+                <span>NEET/NIT</span>
+              </div>
+            </div>
+
+            <div class="showcase-actions">
+              <a href="#results" class="btn" style="width:100%;justify-content:center;background:var(--gold);box-shadow:0 4px 12px rgba(223,155,18,0.35);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                View Merit & Award Lists
+              </a>
+              <div style="display:flex;gap:6px;">
+                <button type="button" class="btn o mobile-prev-btn" onclick="switchShowcaseTab(0)" style="flex:1;justify-content:center;font-size:12.5px;padding:8px;">← About</button>
+                <button type="button" class="btn o mobile-next-btn" onclick="switchShowcaseTab(2)" style="flex:1;justify-content:center;font-size:12.5px;padding:8px;">Register →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: REGISTRATION FORM -->
+        <div class="showcase-card card-reg" id="register-front">
+          <div>
+            <div class="showcase-tag tag-green">✍️ Admissions Open · 2026–27 Session</div>
+            <h2>Register Your Child</h2>
+            <div class="showcase-subtitle">“Pre-Primary (Nursery) to Class XII · Reserve your seat in 30s”</div>
+
+            <form id="front-registration-form" onsubmit="handleFrontRegistration(event)">
+              <div class="reg-form-fields">
+                <div class="reg-field">
+                  <label for="front-student-name">Student Full Name *</label>
+                  <input type="text" id="front-student-name" placeholder="e.g. Aryan Sharma" required>
+                </div>
+
+                <div class="reg-field">
+                  <label for="front-admission-class">Class Seeking Admission *</label>
+                  <select id="front-admission-class" required>
+                    <option value="">-- Select Class --</option>
+                    <option value="Nursery">Nursery</option>
+                    <option value="LKG / UKG">LKG / UKG</option>
+                    <option value="Class I - V (Primary)">Class I - V (Primary Wing)</option>
+                    <option value="Class VI - VIII (Middle)">Class VI - VIII (Middle Wing)</option>
+                    <option value="Class IX - X (Secondary)">Class IX - X (Board Preparation)</option>
+                    <option value="Class XI - XII (Medical / NEET)">Class XI - XII (Medical / NEET)</option>
+                    <option value="Class XI - XII (Non-Med / JEE)">Class XI - XII (Non-Medical / JEE)</option>
+                    <option value="Class XI - XII (Commerce)">Class XI - XII (Commerce Stream)</option>
+                    <option value="Class XI - XII (Arts / Humanities)">Class XI - XII (Humanities / Arts)</option>
+                  </select>
+                </div>
+
+                <div class="reg-field">
+                  <label for="front-parent-phone">Parent / Guardian Mobile Number *</label>
+                  <input type="tel" id="front-parent-phone" placeholder="e.g. 98123 66602" required>
+                </div>
+
+                <div class="reg-field">
+                  <label for="front-village-area">Village / Town / Address *</label>
+                  <input type="text" id="front-village-area" placeholder="e.g. Kharak Jatan / Kalanaur" required>
+                </div>
+              </div>
+
+              <div class="showcase-actions" style="margin-top:10px;">
+                <button type="submit" class="btn wa" style="width:100%;justify-content:center;padding:11px;font-size:14px;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.697c.969.529 1.761.812 2.806.812 3.182 0 5.769-2.587 5.77-5.767 0-3.18-2.587-5.766-5.77-5.766zm9.969 5.766c0 5.514-4.486 10-10 10-1.758 0-3.411-.458-4.856-1.258l-5.144 1.32 1.348-4.918c-.886-1.504-1.348-3.238-1.348-5.144 0-5.514 4.486-10 10-10s10 4.486 10 10z"/></svg>
+                  Send WhatsApp Registration
+                </button>
+                <div style="display:flex;gap:6px;">
+                  <a class="btn o" href="tel:+919812366602" style="flex:1;justify-content:center;font-size:12px;padding:8px;">Call 98123 66602</a>
+                  <a class="btn o" href="tel:+919034744702" style="flex:1;justify-content:center;font-size:12px;padding:8px;">Principal Desk</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -1887,6 +2264,17 @@ footer {
     if (bar) bar.style.width = (cur * 100) + '%';
     updateHUD(cur);
 
+    // Dynamic 3D canvas opacity: Keep soft on hero (cur < 0.12) so the real school building
+    // background photo is beautifully visible, and ramp up as user scrolls into 3D tour
+    if (!document.body.classList.contains('tour-focus')) {
+      if (cur < 0.12) {
+        canvasEl.style.opacity = '0.30';
+      } else {
+        var op = 0.30 + Math.min(0.55, (cur - 0.12) * 2.5);
+        canvasEl.style.opacity = op.toFixed(2);
+      }
+    }
+
     if (!calm) {
       var a = pg.attributes.position.array;
       for (var i = 0; i < N; i++) {
@@ -1902,6 +2290,45 @@ footer {
   }
   requestAnimationFrame(loop);
 })();
+
+// ThreeUI Bestsellers Showcase Tab Switcher for Mobile & Tablets
+function switchShowcaseTab(index) {
+  var tabs = document.querySelectorAll('.showcase-tab');
+  var cards = document.querySelectorAll('.showcase-card');
+  tabs.forEach(function(t, i) {
+    if (i === index) t.classList.add('active');
+    else t.classList.remove('active');
+  });
+  cards.forEach(function(c, i) {
+    if (i === index) {
+      c.classList.add('active-tab');
+      if (window.innerWidth <= 1040) {
+        c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } else {
+      c.classList.remove('active-tab');
+    }
+  });
+}
+
+// Auto-switch tabs when clicking header links on mobile
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href="#register-front"]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.innerWidth <= 1040) switchShowcaseTab(2);
+    });
+  });
+  document.querySelectorAll('a[href="#card-toppers"], a[href="#results"]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.innerWidth <= 1040) switchShowcaseTab(1);
+    });
+  });
+  document.querySelectorAll('a[href="#card-about"], a[href="#about"]').forEach(function(a) {
+    a.addEventListener('click', function() {
+      if (window.innerWidth <= 1040) switchShowcaseTab(0);
+    });
+  });
+});
 
 // Front Photo Switcher
 function switchHeroPhoto(src, el) {
