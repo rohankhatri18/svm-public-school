@@ -1478,6 +1478,287 @@ footer {
   }
 }
 
+/* =========================================================
+   CHAPTER I: 3D FLOATING OPEN BOOK HERO & PARALLAX REVEAL
+   ========================================================= */
+.book-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 5vw 72px;
+  overflow: hidden;
+  z-index: 3;
+  background: radial-gradient(ellipse at 28% 48%, rgba(223, 155, 18, 0.18), rgba(14, 21, 44, 0.72) 66%);
+}
+
+.book-hero-grid {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  gap: 32px;
+  align-items: center;
+  will-change: transform, opacity;
+  transition: transform 0.08s linear, opacity 0.12s linear;
+}
+
+.book-stage {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-aura {
+  position: absolute;
+  width: 78%;
+  height: 78%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 214, 107, 0.34) 0%, rgba(216, 50, 42, 0.14) 45%, transparent 72%);
+  filter: blur(28px);
+  pointer-events: none;
+  animation: bookAuraPulse 4.5s ease-in-out infinite;
+}
+
+@keyframes bookAuraPulse {
+  0%, 100% { transform: scale(0.96); opacity: 0.78; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+
+#book-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 2;
+  cursor: grab;
+}
+#book-canvas:active {
+  cursor: grabbing;
+}
+
+.book-copy {
+  position: relative;
+  z-index: 3;
+  color: #fdfaf3;
+}
+
+.book-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: bookTextReveal 0.95s cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+}
+.book-reveal-1 { animation-delay: 0.95s; }
+.book-reveal-2 { animation-delay: 1.25s; }
+.book-reveal-3 { animation-delay: 1.55s; }
+.book-reveal-4 { animation-delay: 1.85s; }
+
+@keyframes bookTextReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.book-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 99px;
+  background: rgba(255, 248, 231, 0.12);
+  border: 1px solid rgba(255, 224, 130, 0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffe89e;
+  margin-bottom: 16px;
+  box-shadow: 0 0 24px rgba(223, 155, 18, 0.32), inset 0 0 12px rgba(255, 232, 158, 0.14);
+}
+
+.book-title {
+  font-family: var(--font-serif);
+  font-size: clamp(38px, 4.6vw, 64px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  color: #ffffff;
+  text-shadow: 0 0 28px rgba(255, 226, 138, 0.38), 0 4px 22px rgba(0, 0, 0, 0.55);
+  animation: softAmbientGlow 4s ease-in-out infinite;
+}
+
+.book-title-accent {
+  display: block;
+  font-style: italic;
+  background: linear-gradient(120deg, #fff6d6 0%, #ffd266 50%, #fff6d6 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(255, 210, 102, 0.42));
+  animation: shimmerGlow 5.5s linear infinite;
+}
+
+@keyframes softAmbientGlow {
+  0%, 100% { text-shadow: 0 0 24px rgba(255, 226, 138, 0.32), 0 4px 20px rgba(0, 0, 0, 0.55); }
+  50% { text-shadow: 0 0 38px rgba(255, 226, 138, 0.58), 0 4px 24px rgba(0, 0, 0, 0.6); }
+}
+
+@keyframes shimmerGlow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.book-subtitle {
+  font-size: clamp(15px, 1.45vw, 18px);
+  line-height: 1.6;
+  color: rgba(248, 244, 236, 0.9);
+  margin: 0 0 22px;
+  max-width: 540px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.book-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-book-admit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 99px;
+  background: linear-gradient(135deg, #d8322a 0%, #df9b12 100%);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255, 236, 179, 0.45);
+  box-shadow: 0 8px 28px rgba(216, 50, 42, 0.45), 0 0 22px rgba(223, 155, 18, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-book-admit:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 34px rgba(216, 50, 42, 0.55), 0 0 30px rgba(255, 214, 107, 0.55);
+}
+
+.btn-book-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff8e7;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.btn-book-next:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.book-scroll-cue {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 99px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 232, 158, 0.32);
+  color: #ffe89e;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: cueFloat 2.4s ease-in-out infinite;
+  z-index: 4;
+}
+
+@keyframes cueFloat {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 6px); }
+}
+
+/* Next Chapter Parallax Container */
+#about {
+  position: relative;
+  z-index: 4;
+}
+#about .showcase-container {
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .book-aura, .book-title, .book-title-accent, .book-scroll-cue {
+    animation: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .book-hero {
+    padding: 96px 16px 64px;
+    min-height: 100svh;
+  }
+  .book-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+  }
+  .book-stage {
+    height: 300px;
+  }
+  .book-eyebrow {
+    margin-bottom: 10px;
+    font-size: 10.5px;
+    padding: 5px 12px;
+  }
+  .book-subtitle {
+    margin: 0 auto 16px;
+    font-size: 14px;
+  }
+  .book-cta-row {
+    justify-content: center;
+  }
+  .btn-book-admit, .btn-book-next {
+    width: 100%;
+    justify-content: center;
+  }
+  .book-scroll-cue {
+    display: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1486,8 +1767,10 @@ footer {
 
 <!-- Background Slides for Dynamic Scroll Transition -->
 <div id="bg-container">
-  <!-- Slide 0: Front Page — Real School Building (Uploaded) -->
+  <!-- Slide 0: Chapter I — Floating Book & School Building -->
   <div class="bg-slide active" style="background-image: url('images/school_front_building.jpg');"></div>
+  <!-- Slide 1: Chapter II — 3-Card Showcase -->
+  <div class="bg-slide" style="background-image: url('images/school_front_building.jpg');"></div>
   <!-- Slide 1: Assembly Section — Assembly Photo -->
   <div class="bg-slide" style="background-image: url('images/assembly_photo.png'); background-position: center 40%;"></div>
   <!-- Slide 2: Academic Section — School Achievement Celebration (Cultural) -->
@@ -1579,13 +1862,49 @@ footer {
 <!-- Scrollable Web Content -->
 <main>
 
-  <!-- SECTION 1: FRONT PAGE (THREEUI BESTSELLERS 3-CARD SHOWCASE) -->
+  <!-- CHAPTER I: GIANT FLOATING OPEN BOOK HERO -->
+  <section id="book-hero" class="book-hero">
+    <div class="book-hero-grid" id="book-hero-grid">
+      <!-- Left: 3D Realistic Floating Open Book -->
+      <div class="book-stage">
+        <div class="book-aura"></div>
+        <canvas id="book-canvas" aria-label="Interactive 3D Open Book of Knowledge"></canvas>
+      </div>
+
+      <!-- Right: Glowing School Headline & Admission CTA -->
+      <div class="book-copy">
+        <div class="book-eyebrow book-reveal book-reveal-1">📖 Chapter I · World of Knowledge</div>
+        <h1 class="book-title book-reveal book-reveal-2">
+          S.V.M Public School
+          <span class="book-title-accent">Where Every Page Begins a Brighter Future</span>
+        </h1>
+        <p class="book-subtitle book-reveal book-reveal-3">
+          Saraswati Vidya Mandir, Kharak Jatan (Rohtak) — Permanently Recognised (HBSE). Discover 100% board pass results, scooty &amp; bicycle honors, and Nursery to Class XII excellence.
+        </p>
+        <div class="book-cta-row book-reveal book-reveal-4">
+          <a href="#register-front" class="btn-book-admit">
+            ✍️ Admissions 2026–27 · Register Now &rarr;
+          </a>
+          <a href="#about" class="btn-book-next">
+            Open Next Chapter &darr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="book-scroll-cue">
+      <span>Scroll down to reveal the next chapter</span>
+      <span>&darr;</span>
+    </a>
+  </section>
+
+  <!-- CHAPTER II: FRONT PAGE SHOWCASE (THREEUI BESTSELLERS 3-CARD SHOWCASE) -->
   <section id="about" style="padding-top:110px; min-height: 100vh; display: flex; align-items: center;">
     <div class="showcase-container">
       
       <!-- Showcase Top Header / Badge -->
       <div class="showcase-header">
-        <div class="showcase-badge">✨ S.V.M Academic Showcase · Estd. & Recognised</div>
+        <div class="showcase-badge">📖 Chapter II · S.V.M Academic Showcase</div>
         <h1>Quality, A Promise, A Tradition</h1>
         <p>Explore our campus heritage, celebrate our block-topping achievers, and enroll for the 2026–27 session.</p>
       </div>
@@ -2418,6 +2737,403 @@ function handleFrontRegistration(e) {
 
   window.open('https://wa.me/919812366602?text=' + msg, '_blank');
 }
+</script>
+
+<!-- Chapter I: 3D Floating Open Book, Emerging World of Knowledge & Chapter Parallax -->
+<script>
+(function(){
+  if (typeof THREE === 'undefined') return;
+  var bookCanvas = document.getElementById('book-canvas');
+  var bookHero = document.getElementById('book-hero');
+  var bookGrid = document.getElementById('book-hero-grid');
+  var nextChapterContainer = document.querySelector('#about .showcase-container');
+  if (!bookCanvas || !bookHero) return;
+
+  var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || window.innerWidth < 860;
+  var calm = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  var renderer = new THREE.WebGLRenderer({ canvas: bookCanvas, antialias: !isMobile, alpha: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(isMobile ? Math.min(window.devicePixelRatio, 1.35) : Math.min(window.devicePixelRatio, 2));
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+  camera.position.set(0, 3.4, 9.6);
+  camera.lookAt(0, 0.35, 0);
+
+  function resizeBookCanvas() {
+    var rect = bookCanvas.parentElement.getBoundingClientRect();
+    var w = Math.max(260, rect.width);
+    var h = Math.max(240, rect.height);
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resizeBookCanvas();
+  window.addEventListener('resize', resizeBookCanvas);
+
+  // Warm ambient + key + rim lighting for realistic leather & glowing paper
+  scene.add(new THREE.HemisphereLight(0xfff6e5, 0x243154, 1.15));
+  var keyLight = new THREE.DirectionalLight(0xffe9c2, 1.25);
+  keyLight.position.set(5, 9, 7);
+  scene.add(keyLight);
+  var goldGlowLight = new THREE.PointLight(0xffcb57, 1.45, 16);
+  goldGlowLight.position.set(0, 2.2, 1.2);
+  scene.add(goldGlowLight);
+
+  // Helper to create crisp printed page textures
+  function makePageTexture(title, lines, badgeText, alignLeft) {
+    var cv = document.createElement('canvas');
+    cv.width = 512;
+    cv.height = 680;
+    var ctx = cv.getContext('2d');
+
+    var grad = ctx.createLinearGradient(alignLeft ? 512 : 0, 0, alignLeft ? 0 : 512, 0);
+    grad.addColorStop(0, '#e8dcc4');
+    grad.addColorStop(0.14, '#fbf6ea');
+    grad.addColorStop(1, '#fffdf7');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 512, 680);
+
+    // Subtle double border
+    ctx.strokeStyle = 'rgba(216, 50, 42, 0.25)';
+    ctx.lineWidth = 4;
+    ctx.strokeRect(28, 28, 456, 624);
+    ctx.strokeStyle = 'rgba(223, 155, 18, 0.45)';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(38, 38, 436, 604);
+
+    // Header badge
+    ctx.fillStyle = '#d8322a';
+    ctx.font = 'bold 20px Georgia, serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(badgeText, 256, 95);
+
+    // Crest circle
+    ctx.beginPath();
+    ctx.arc(256, 165, 38, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(223, 155, 18, 0.16)';
+    ctx.fill();
+    ctx.strokeStyle = '#df9b12';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.fillStyle = '#15224e';
+    ctx.font = 'bold 24px Georgia, serif';
+    ctx.fillText('S.V.M', 256, 174);
+
+    // Title
+    ctx.fillStyle = '#1b2340';
+    ctx.font = 'bold 34px Georgia, serif';
+    ctx.fillText(title, 256, 255);
+
+    // Divider
+    ctx.fillStyle = '#df9b12';
+    ctx.fillRect(146, 276, 220, 3);
+
+    // Content lines
+    ctx.fillStyle = '#4e5772';
+    ctx.font = '22px Georgia, serif';
+    lines.forEach(function(line, i) {
+      ctx.fillText(line, 256, 336 + i * 44);
+    });
+
+    // Subtle ruled lines at bottom
+    ctx.strokeStyle = 'rgba(27, 35, 64, 0.08)';
+    ctx.lineWidth = 1.5;
+    for (var y = 510; y <= 600; y += 28) {
+      ctx.beginPath();
+      ctx.moveTo(72, y);
+      ctx.lineTo(440, y);
+      ctx.stroke();
+    }
+
+    var tex = new THREE.CanvasTexture(cv);
+    tex.anisotropy = 4;
+    return tex;
+  }
+
+  var leftPageTex = makePageTexture(
+    'S.V.M Public School',
+    ['Kharak Jatan, Rohtak', 'HBSE Permanently Recognised', 'Nursery to Class XII', 'Quality · Promise · Tradition'],
+    'ESTD. & RECOGNISED',
+    true
+  );
+  var rightPageTex = makePageTexture(
+    'World of Knowledge',
+    ['100% Board Pass Results', 'Scooty & Bicycle Honors', 'Science · Commerce · Arts', 'Admissions Open 2026–27'],
+    'CHAPTER I · EXCELLENCE',
+    false
+  );
+
+  // Main Book Group
+  var bookGroup = new THREE.Group();
+  bookGroup.rotation.x = 0.24;
+  scene.add(bookGroup);
+
+  var leatherMat = new THREE.MeshStandardMaterial({ color: 0x6f1922, roughness: 0.55, metalness: 0.15 });
+  var goldMat = new THREE.MeshStandardMaterial({ color: 0xf4be37, roughness: 0.3, metalness: 0.72, emissive: 0x3a2300, emissiveIntensity: 0.35 });
+  var paperBlockMat = new THREE.MeshLambertMaterial({ color: 0xf4ebd8 });
+
+  // Spine
+  var spine = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 4.1, 16), leatherMat);
+  spine.rotation.x = Math.PI / 2;
+  spine.position.set(0, -0.14, 0);
+  bookGroup.add(spine);
+
+  // Gold spine bands
+  [-1.5, -0.5, 0.5, 1.5].forEach(function(zPos) {
+    var band = new THREE.Mesh(new THREE.CylinderGeometry(0.295, 0.295, 0.09, 16), goldMat);
+    band.rotation.x = Math.PI / 2;
+    band.position.set(0, -0.14, zPos);
+    bookGroup.add(band);
+  });
+
+  // Curved page geometry helper
+  function createCurvedPageGeo(w, h, flipSign) {
+    var geo = new THREE.PlaneGeometry(w, h, 18, 1);
+    geo.rotateX(-Math.PI / 2);
+    var pos = geo.attributes.position;
+    for (var i = 0; i < pos.count; i++) {
+      var x = pos.getX(i);
+      var shiftedX = x + flipSign * (w / 2);
+      var t = Math.abs(shiftedX) / w;
+      var arch = Math.sin(t * Math.PI) * 0.24;
+      pos.setX(i, shiftedX);
+      pos.setY(i, arch);
+    }
+    geo.computeVertexNormals();
+    return geo;
+  }
+
+  // Left Wing (pivots slightly open from spine)
+  var leftPivot = new THREE.Group();
+  leftPivot.position.set(-0.12, 0, 0);
+  leftPivot.rotation.z = 0.16;
+  bookGroup.add(leftPivot);
+
+  var leftCover = new THREE.Mesh(new THREE.BoxGeometry(3.1, 0.12, 4.15), leatherMat);
+  leftCover.position.set(-1.55, -0.22, 0);
+  leftPivot.add(leftCover);
+
+  var leftPaperBlock = new THREE.Mesh(new THREE.BoxGeometry(2.9, 0.24, 3.92), paperBlockMat);
+  leftPaperBlock.position.set(-1.46, -0.04, 0);
+  leftPivot.add(leftPaperBlock);
+
+  var leftPageFace = new THREE.Mesh(
+    createCurvedPageGeo(2.86, 3.88, -1),
+    new THREE.MeshLambertMaterial({ map: leftPageTex })
+  );
+  leftPageFace.position.set(0, 0.09, 0);
+  leftPivot.add(leftPageFace);
+
+  // Right Wing (starts closed on top of left, then opens smoothly!)
+  var rightPivot = new THREE.Group();
+  rightPivot.position.set(0.12, 0, 0);
+  bookGroup.add(rightPivot);
+
+  var rightCover = new THREE.Mesh(new THREE.BoxGeometry(3.1, 0.12, 4.15), leatherMat);
+  rightCover.position.set(1.55, -0.22, 0);
+  rightPivot.add(rightCover);
+
+  var rightPaperBlock = new THREE.Mesh(new THREE.BoxGeometry(2.9, 0.24, 3.92), paperBlockMat);
+  rightPaperBlock.position.set(1.46, -0.04, 0);
+  rightPivot.add(rightPaperBlock);
+
+  var rightPageFace = new THREE.Mesh(
+    createCurvedPageGeo(2.86, 3.88, 1),
+    new THREE.MeshLambertMaterial({ map: rightPageTex })
+  );
+  rightPageFace.position.set(0, 0.09, 0);
+  rightPivot.add(rightPageFace);
+
+  // Subtle Turning Page (sweeps gently right -> left periodically)
+  var turnPivot = new THREE.Group();
+  turnPivot.position.set(0, 0.11, 0);
+  bookGroup.add(turnPivot);
+  var turnGeo = createCurvedPageGeo(2.82, 3.82, 1);
+  var turnMat = new THREE.MeshLambertMaterial({
+    color: 0xfffaf0,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.92
+  });
+  var turnPageMesh = new THREE.Mesh(turnGeo, turnMat);
+  turnPivot.add(turnPageMesh);
+
+  // Emerging "World of Education" above the open book
+  var worldGroup = new THREE.Group();
+  worldGroup.position.set(0, 0.22, 0);
+  bookGroup.add(worldGroup);
+
+  // Mini S.V.M School Pavilion rising from the spine
+  var miniSchool = new THREE.Group();
+  var sBase = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.52, 0.72), new THREE.MeshLambertMaterial({ color: 0xf7f2e9 }));
+  sBase.position.y = 0.26;
+  miniSchool.add(sBase);
+  var sRoof = new THREE.Mesh(new THREE.BoxGeometry(1.26, 0.1, 0.82), new THREE.MeshLambertMaterial({ color: 0xd8322a }));
+  sRoof.position.y = 0.56;
+  miniSchool.add(sRoof);
+  var sPorch = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.44, 0.22), new THREE.MeshLambertMaterial({ color: 0x3a86d8 }));
+  sPorch.position.set(0, 0.22, 0.42);
+  miniSchool.add(sPorch);
+  // Tiny tricolor flagpole
+  var pole = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.75, 8), new THREE.MeshLambertMaterial({ color: 0xdddddd }));
+  pole.position.set(-0.72, 0.37, 0.22);
+  miniSchool.add(pole);
+  [0xff9933, 0xffffff, 0x138808].forEach(function(col, idx) {
+    var flag = new THREE.Mesh(new THREE.PlaneGeometry(0.24, 0.065), new THREE.MeshBasicMaterial({ color: col, side: THREE.DoubleSide }));
+    flag.position.set(-0.6, 0.71 - idx * 0.065, 0.22);
+    miniSchool.add(flag);
+  });
+  worldGroup.add(miniSchool);
+
+  // Floating Graduation Cap (left-above)
+  var gradCap = new THREE.Group();
+  var capCrown = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.28, 0.18, 12), new THREE.MeshLambertMaterial({ color: 0x15224e }));
+  gradCap.add(capCrown);
+  var capBoard = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.05, 0.62), new THREE.MeshLambertMaterial({ color: 0x15224e }));
+  capBoard.position.y = 0.11;
+  gradCap.add(capBoard);
+  var tassel = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.04, 0.26, 8), goldMat);
+  tassel.position.set(0.28, -0.02, 0.28);
+  gradCap.add(tassel);
+  gradCap.position.set(-1.35, 1.35, 0.2);
+  gradCap.rotation.z = 0.22;
+  worldGroup.add(gradCap);
+
+  // Floating Golden Knowledge Atom / Orbitals (right-above)
+  var atomGroup = new THREE.Group();
+  var core = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 16), goldMat);
+  atomGroup.add(core);
+  var ring1 = new THREE.Mesh(new THREE.TorusGeometry(0.42, 0.024, 10, 32), goldMat);
+  ring1.rotation.x = 0.9;
+  atomGroup.add(ring1);
+  var ring2 = new THREE.Mesh(new THREE.TorusGeometry(0.42, 0.024, 10, 32), new THREE.MeshStandardMaterial({ color: 0x62b6ff, emissive: 0x1f5ca8, emissiveIntensity: 0.45 }));
+  ring2.rotation.y = 1.05;
+  ring2.rotation.x = -0.6;
+  atomGroup.add(ring2);
+  atomGroup.position.set(1.38, 1.42, 0.15);
+  worldGroup.add(atomGroup);
+
+  // Rising Golden Knowledge Sparks
+  var sparkCount = 95;
+  var sparkPos = new Float32Array(sparkCount * 3);
+  for (var i = 0; i < sparkCount; i++) {
+    sparkPos[i * 3] = (Math.random() - 0.5) * 5.2;
+    sparkPos[i * 3 + 1] = Math.random() * 2.8;
+    sparkPos[i * 3 + 2] = (Math.random() - 0.5) * 3.4;
+  }
+  var sparkGeo = new THREE.BufferGeometry();
+  sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPos, 3));
+  var sparks = new THREE.Points(
+    sparkGeo,
+    new THREE.PointsMaterial({ color: 0xffe082, size: 0.085, transparent: true, opacity: 0.85 })
+  );
+  worldGroup.add(sparks);
+
+  // Pointer parallax state
+  var pointerX = 0, pointerY = 0;
+  bookHero.addEventListener('mousemove', function(e) {
+    var rect = bookHero.getBoundingClientRect();
+    pointerX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    pointerY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+  });
+
+  function easeOutCubic(x) {
+    return 1 - Math.pow(1 - x, 3);
+  }
+
+  var startTime = null;
+  var scrollProgress = 0;
+
+  function updateBookParallax() {
+    var vh = window.innerHeight || 800;
+    scrollProgress = Math.min(1, Math.max(0, window.scrollY / vh));
+    if (bookGrid) {
+      var scale = 1 - scrollProgress * 0.06;
+      var ty = scrollProgress * 65;
+      var op = Math.max(0, 1 - scrollProgress * 1.15);
+      bookGrid.style.transform = 'translate3d(0,' + ty.toFixed(1) + 'px,0) scale(' + scale.toFixed(3) + ')';
+      bookGrid.style.opacity = op.toFixed(3);
+    }
+    if (nextChapterContainer) {
+      var p2 = Math.min(1, Math.max(0, (window.scrollY - vh * 0.15) / (vh * 0.75)));
+      var rise = (1 - p2) * 34;
+      nextChapterContainer.style.transform = 'translate3d(0,' + rise.toFixed(1) + 'px,0)';
+    }
+  }
+  window.addEventListener('scroll', updateBookParallax, { passive: true });
+  updateBookParallax();
+
+  function animateBook(ts) {
+    requestAnimationFrame(animateBook);
+    // Pause rendering when scrolled well past Chapter I to save GPU for the campus tour
+    if (window.scrollY > window.innerHeight * 1.35) return;
+
+    if (!startTime) startTime = ts;
+    var elapsed = calm ? 4.0 : (ts - startTime) / 1000;
+
+    // Phase 1 (0 - 0.7s): Book appears
+    var appearT = Math.min(1, elapsed / 0.7);
+    var appearScale = 0.72 + 0.28 * easeOutCubic(appearT);
+    bookGroup.scale.setScalar(appearScale);
+
+    // Phase 2 (0.55 - 2.05s): Book opens from closed to wide open
+    var openT = Math.min(1, Math.max(0, (elapsed - 0.55) / 1.5));
+    var openEase = easeOutCubic(openT);
+    // Closed: Math.PI - 0.22 -> Open: -0.16
+    rightPivot.rotation.z = (Math.PI - 0.22) * (1 - openEase) - 0.16 * openEase;
+
+    // Phase 3 (1.6 - 2.9s): World of education emerges
+    var worldT = Math.min(1, Math.max(0, (elapsed - 1.6) / 1.3));
+    var worldEase = easeOutCubic(worldT);
+    worldGroup.scale.setScalar(0.001 + 0.999 * worldEase);
+    worldGroup.position.y = 0.22 + (1 - worldEase) * -0.45;
+
+    // Phase 4: Gentle floating & subtle page-turning loop
+    if (!calm) {
+      bookGroup.position.y = Math.sin(elapsed * 1.25) * 0.14 + scrollProgress * 1.2;
+      bookGroup.rotation.y = Math.sin(elapsed * 0.55) * 0.08 + pointerX * 0.16;
+      bookGroup.rotation.x = 0.24 + pointerY * 0.09 - scrollProgress * 0.35;
+
+      // Subtle periodic page turn every 4.6s once book is open
+      if (elapsed > 2.4) {
+        var cycle = (elapsed - 2.4) % 4.6;
+        if (cycle < 1.7) {
+          var pt = easeOutCubic(cycle / 1.7);
+          turnPageMesh.visible = true;
+          turnPivot.rotation.z = -0.14 + pt * (Math.PI - 0.02);
+          turnMat.opacity = Math.sin(pt * Math.PI) * 0.85 + 0.1;
+        } else {
+          turnPageMesh.visible = false;
+        }
+      } else {
+        turnPageMesh.visible = false;
+      }
+
+      // Floating educational objects
+      gradCap.position.y = 1.35 + Math.sin(elapsed * 1.7) * 0.12;
+      gradCap.rotation.y = elapsed * 0.65;
+      atomGroup.position.y = 1.42 + Math.cos(elapsed * 1.5) * 0.11;
+      ring1.rotation.z = elapsed * 1.1;
+      ring2.rotation.z = -elapsed * 0.9;
+      miniSchool.position.y = Math.sin(elapsed * 1.3) * 0.05;
+
+      // Rising golden sparks
+      var arr = sparkGeo.attributes.position.array;
+      for (var j = 0; j < sparkCount; j++) {
+        arr[j * 3 + 1] += 0.011;
+        arr[j * 3] += Math.sin(elapsed * 1.5 + j) * 0.003;
+        if (arr[j * 3 + 1] > 2.8) arr[j * 3 + 1] = 0.05;
+      }
+      sparkGeo.attributes.position.needsUpdate = true;
+    } else {
+      turnPageMesh.visible = false;
+    }
+
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(animateBook);
+})();
 </script>
 </body>
 </html>
