@@ -446,46 +446,110 @@ section.center {
   box-shadow: 0 4px 14px var(--primary-glow);
 }
 
-/* 3-Card Grid */
+/* 3-Card Grid — 3D Floating Glassmorphism (Dark Navy & Golden Theme) */
 .showcase-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  align-items: stretch;
+  grid-template-columns: 1fr 1.12fr 1fr;
+  gap: 26px;
+  align-items: center;
   width: 100%;
+  perspective: 1400px;
 }
 
 .showcase-card {
-  background: linear-gradient(180deg, rgba(255, 253, 249, 0.96) 0%, rgba(250, 246, 238, 0.93) 100%);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-radius: 24px;
-  border: 1px solid var(--card-border);
-  box-shadow: 0 18px 46px rgba(15, 25, 55, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  --mx: 50%;
+  --my: 25%;
+  background: linear-gradient(155deg, rgba(18, 31, 68, 0.90) 0%, rgba(10, 17, 38, 0.94) 58%, rgba(20, 34, 72, 0.88) 100%);
+  backdrop-filter: blur(22px) saturate(145%);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  border-radius: 26px;
+  border: 1px solid rgba(244, 190, 55, 0.34);
+  box-shadow:
+    0 24px 58px rgba(4, 9, 24, 0.56),
+    0 0 28px rgba(223, 155, 18, 0.14),
+    inset 0 1px 0 rgba(255, 236, 179, 0.28),
+    inset 0 0 28px rgba(223, 155, 18, 0.06);
   padding: 26px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  transition: transform 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease;
-}
-:root[data-theme="dark"] .showcase-card {
-  background: linear-gradient(180deg, rgba(20, 29, 54, 0.95) 0%, rgba(14, 21, 42, 0.94) 100%);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-.showcase-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 26px 60px rgba(15, 25, 55, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.98);
-}
-:root[data-theme="dark"] .showcase-card:hover {
-  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.62);
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  animation: cardFloat 6.2s ease-in-out infinite;
+  transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.38s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s ease;
 }
 
-/* Top Border Accents */
-.card-about { border-top: 5px solid var(--primary); }
-.card-toppers { border-top: 5px solid var(--gold); }
-.card-reg { border-top: 5px solid #25d366; }
+/* Realistic Diagonal Glass Reflection */
+.showcase-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 238, 188, 0.05) 30%, transparent 56%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Interactive Specular Glass Sheen */
+.showcase-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 280px at var(--mx) var(--my), rgba(255, 224, 130, 0.16), transparent 68%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.showcase-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+.card-about { animation-delay: 0s; }
+.card-reg { animation-delay: -3.1s; }
+
+/* Prominent & Larger Centre Card */
+.card-toppers {
+  padding: 32px 26px;
+  border: 1.5px solid rgba(255, 214, 102, 0.62);
+  box-shadow:
+    0 32px 76px rgba(4, 9, 24, 0.68),
+    0 0 42px rgba(223, 155, 18, 0.26),
+    inset 0 1px 0 rgba(255, 242, 196, 0.42),
+    inset 0 0 36px rgba(223, 155, 18, 0.10);
+  animation: cardFloatCenter 6.2s ease-in-out infinite;
+  animation-delay: -1.5s;
+}
+
+@keyframes cardFloatCenter {
+  0%, 100% { transform: translateY(-10px) scale(1.02); }
+  50% { transform: translateY(-18px) scale(1.02); }
+}
+
+.showcase-card:hover {
+  animation-play-state: paused;
+  border-color: rgba(255, 218, 118, 0.78);
+  box-shadow:
+    0 34px 78px rgba(4, 9, 24, 0.72),
+    0 0 46px rgba(223, 155, 18, 0.32),
+    inset 0 1px 0 rgba(255, 244, 204, 0.45);
+}
+.showcase-card:hover::after {
+  opacity: 1;
+}
+
+/* Glowing Gold & Accent Top Edges */
+.card-about { border-top: 4px solid var(--gold); }
+.card-toppers { border-top: 5px solid #ffd266; }
+.card-reg { border-top: 4px solid var(--gold); }
 
 /* Showcase Card Inner Typography */
 .showcase-tag {
@@ -493,42 +557,47 @@ section.center {
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
   margin-bottom: 6px;
 }
-.tag-red { color: var(--primary); }
-.tag-gold { color: #b87c08; }
-.tag-green { color: #169b46; }
+.tag-red { color: #ff9f8e; }
+.tag-gold { color: #ffd76a; text-shadow: 0 0 14px rgba(255, 215, 106, 0.35); }
+.tag-green { color: #7aeeb0; }
 
 .showcase-card h2 {
   font-family: var(--font-serif);
-  font-size: clamp(23px, 2.2vw, 30px);
+  font-size: clamp(24px, 2.3vw, 31px);
   font-weight: 400;
   line-height: 1.15;
-  margin: 2px 0 4px;
-  color: var(--ink);
+  margin: 2px 0 5px;
+  color: #fffaf0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+.card-toppers h2 {
+  font-size: clamp(26px, 2.5vw, 34px);
+  color: #ffe8a3;
 }
 
 .showcase-subtitle {
   font-size: 13px;
   font-style: italic;
-  color: var(--muted);
-  margin-bottom: 12px;
-  line-height: 1.4;
+  color: #c5d1ec;
+  margin-bottom: 14px;
+  line-height: 1.45;
 }
 
 /* Media in Cards - Optimized for Full Visibility Without Cropping */
 .showcase-media {
   position: relative;
   width: 100%;
-  border-radius: var(--radius-sm);
+  border-radius: 16px;
   overflow: hidden;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   cursor: pointer;
-  background: #0b1222;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.14);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #080f21;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(255, 214, 102, 0.28);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -539,7 +608,7 @@ section.center {
   object-fit: cover;
   object-position: center center;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s ease;
 }
 .showcase-media:hover img {
   transform: scale(1.03);
@@ -548,13 +617,14 @@ section.center {
   position: absolute;
   bottom: 8px;
   left: 10px;
-  background: rgba(15, 23, 42, 0.82);
+  background: rgba(10, 17, 38, 0.85);
+  border: 1px solid rgba(255, 214, 102, 0.32);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  color: #fff;
+  color: #ffe8a3;
   font-size: 10.5px;
-  font-weight: 500;
-  padding: 3px 9px;
+  font-weight: 600;
+  padding: 4px 10px;
   border-radius: 99px;
   letter-spacing: 0.02em;
 }
@@ -562,7 +632,7 @@ section.center {
   position: absolute;
   top: 8px;
   right: 10px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.65);
   color: #fff;
   font-size: 10.5px;
   padding: 3px 7px;
@@ -578,10 +648,10 @@ section.center {
 .showcase-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   font-size: 13px;
-  line-height: 1.55;
-  color: var(--muted);
+  line-height: 1.58;
+  color: #d2dcf3;
 }
 .showcase-list li {
   position: relative;
@@ -592,15 +662,12 @@ section.center {
   content: "•";
   position: absolute;
   left: 4px;
-  color: var(--primary);
+  color: #ffd266;
   font-size: 16px;
   line-height: 1;
 }
-.card-toppers .showcase-list li::before {
-  color: var(--gold);
-}
 .showcase-list li b {
-  color: var(--ink);
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -608,36 +675,77 @@ section.center {
 .showcase-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  margin: 10px 0 12px;
+  gap: 8px;
+  margin: 10px 0 14px;
 }
 .showcase-stat-box {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 8px 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 214, 102, 0.24);
+  border-radius: 12px;
+  padding: 9px 4px;
   text-align: center;
-}
-:root[data-theme="dark"] .showcase-stat-box {
-  background: rgba(255, 255, 255, 0.05);
 }
 .showcase-stat-box strong {
   display: block;
   font-family: var(--font-serif);
-  font-size: 19px;
+  font-size: 20px;
   line-height: 1;
-  color: var(--primary);
+  color: #ffd76a;
   font-weight: 500;
-}
-.card-toppers .showcase-stat-box strong {
-  color: var(--gold);
 }
 .showcase-stat-box span {
   display: block;
   font-size: 10.5px;
-  color: var(--muted);
+  color: #c5d1ec;
   margin-top: 3px;
   font-weight: 500;
+}
+
+/* Dark Navy Glass Form & Buttons Inside Showcase Cards */
+.showcase-card .reg-field label {
+  color: #e6ecfa;
+}
+.showcase-card .reg-field input,
+.showcase-card .reg-field select {
+  background: rgba(7, 13, 30, 0.72);
+  border: 1px solid rgba(255, 214, 102, 0.30);
+  color: #ffffff;
+}
+.showcase-card .reg-field input::placeholder {
+  color: rgba(203, 213, 240, 0.55);
+}
+.showcase-card .reg-field input:focus,
+.showcase-card .reg-field select:focus {
+  border-color: #ffd266;
+  box-shadow: 0 0 0 3px rgba(223, 155, 18, 0.22);
+}
+.showcase-card .btn.o {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffe8a3;
+  border-color: rgba(255, 214, 102, 0.40);
+}
+.showcase-card .btn.o:hover {
+  background: rgba(255, 214, 102, 0.16);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-card, .card-toppers {
+    animation: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 1040px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    perspective: none;
+  }
+  .showcase-card, .card-toppers {
+    animation: none;
+    transform: none;
+    padding: 24px 20px;
+  }
 }
 
 /* Card Action Bottom */
@@ -2011,9 +2119,9 @@ footer {
             <h2>Block Toppers & Awards</h2>
             <div class="showcase-subtitle">“Honouring extraordinary talent with Scooties & Bicycles”</div>
 
-            <div class="showcase-media" onclick="openLightbox('images/toppers.png', 'Class 10 Toppers Honoured with Scooties &amp; Bicycles at Annual Function')" style="background:#0b1222;">
-              <img src="images/toppers.png" alt="Class 10 Toppers Scooty Distribution" style="height:280px;object-fit:contain;object-position:center top;">
-              <span class="showcase-badge-pill">🛵 Scooty &amp; Cycle Honors</span>
+            <div class="showcase-media" onclick="openLightbox('images/awards.png', 'Block Toppers &amp; Annual Prize Distribution at S.V.M Public School')" style="background:#080f21;">
+              <img src="images/awards.png" alt="Block Toppers and Annual Awards Distribution" style="height:280px;object-fit:contain;object-position:center top;">
+              <span class="showcase-badge-pill">🏆 Toppers &amp; Award Honors</span>
               <span class="showcase-badge-zoom">🔍 Zoom</span>
             </div>
 
@@ -2879,6 +2987,28 @@ function switchShowcaseTab(index) {
     }
   });
 }
+
+// 3D Glassmorphism Hover Tilt & Specular Reflection on Showcase Cards (Desktop)
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.showcase-card').forEach(function(card) {
+    var isCenter = card.classList.contains('card-toppers');
+    card.addEventListener('mousemove', function(e) {
+      if (window.innerWidth <= 1040) return;
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      var rx = (0.5 - py) * 7.5;
+      var ry = (px - 0.5) * 8.5;
+      card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+      card.style.transform = 'translateY(' + (isCenter ? -14 : -8) + 'px) scale(' + (isCenter ? 1.03 : 1.01) + ') rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
+    });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+    });
+  });
+})();
 
 // Auto-switch tabs when clicking header links on mobile
 document.addEventListener('DOMContentLoaded', function() {
