@@ -343,47 +343,75 @@ section.center {
 
 .showcase-header {
   text-align: center;
-  max-width: 860px;
-  margin: 0 auto 4px;
+  max-width: 880px;
+  margin: 0 auto 6px;
+  padding: 20px 28px;
+  border-radius: 22px;
+  background: rgba(255, 252, 247, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  box-shadow: 0 14px 38px rgba(15, 25, 55, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+:root[data-theme="dark"] .showcase-header {
+  background: rgba(15, 23, 42, 0.86);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.45);
 }
 
 .showcase-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--card-glass);
-  border: 1px solid var(--border);
+  background: var(--primary-light);
+  border: 1px solid rgba(216, 50, 42, 0.22);
   border-radius: 99px;
   padding: 6px 16px;
   font-family: var(--font-sans);
   font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--primary);
-  margin-bottom: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  margin-bottom: 10px;
+  box-shadow: 0 2px 10px rgba(216, 50, 42, 0.08);
 }
 
 .showcase-header h1 {
   font-family: var(--font-serif);
-  font-size: clamp(32px, 4.2vw, 48px);
+  font-size: clamp(32px, 4.1vw, 50px);
+  font-weight: 400;
   line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin: 4px 0 8px;
-  text-shadow: 0 2px 14px rgba(255,255,255,0.7);
+  letter-spacing: 0.02em;
+  color: var(--navy);
+  margin: 4px 0 10px;
+  position: relative;
+  display: inline-block;
+}
+.showcase-header h1::after {
+  content: "";
+  display: block;
+  width: 96px;
+  height: 3px;
+  margin: 10px auto 0;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
 }
 :root[data-theme="dark"] .showcase-header h1 {
-  text-shadow: 0 2px 16px rgba(0,0,0,0.85);
+  color: #fff8e7;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.65);
 }
 
 .showcase-header p {
-  font-size: clamp(14px, 1.6vw, 16.5px);
-  color: var(--muted);
+  font-size: clamp(14.5px, 1.55vw, 17px);
+  font-weight: 500;
+  color: #2b3554;
   max-width: 720px;
-  margin: 0 auto;
-  line-height: 1.5;
+  margin: 4px auto 0;
+  line-height: 1.55;
+}
+:root[data-theme="dark"] .showcase-header p {
+  color: #dbe3f8;
 }
 
 /* Mobile Tabs Switcher */
@@ -422,29 +450,36 @@ section.center {
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: 24px;
   align-items: stretch;
   width: 100%;
 }
 
 .showcase-card {
-  background: var(--card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(255, 253, 249, 0.96) 0%, rgba(250, 246, 238, 0.93) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 24px;
   border: 1px solid var(--card-border);
-  box-shadow: var(--shadow);
-  padding: 24px 22px;
+  box-shadow: 0 18px 46px rgba(15, 25, 55, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  padding: 26px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   overflow: hidden;
-  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease;
+}
+:root[data-theme="dark"] .showcase-card {
+  background: linear-gradient(180deg, rgba(20, 29, 54, 0.95) 0%, rgba(14, 21, 42, 0.94) 100%);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .showcase-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 22px 55px rgba(15, 25, 55, 0.26);
+  transform: translateY(-6px);
+  box-shadow: 0 26px 60px rgba(15, 25, 55, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.98);
+}
+:root[data-theme="dark"] .showcase-card:hover {
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.62);
 }
 
 /* Top Border Accents */
@@ -1905,7 +1940,7 @@ footer {
       <!-- Showcase Top Header / Badge -->
       <div class="showcase-header">
         <div class="showcase-badge">📖 Chapter II · S.V.M Academic Showcase</div>
-        <h1>Quality, A Promise, A Tradition</h1>
+        <h1>QUALITY · A PROMISE · A TRADITION</h1>
         <p>Explore our campus heritage, celebrate our block-topping achievers, and enroll for the 2026–27 session.</p>
       </div>
 
@@ -2403,7 +2438,7 @@ footer {
   window.addEventListener('scroll', updateBackgroundOnScroll, { passive: true });
   updateBackgroundOnScroll();
 
-  // Three.js 3D Campus Scene (Rendered directly into #c with transparent background)
+  // Three.js 3D Campus Scene (Upgraded: Realistic Textures, PBR Materials, Reflections, AO & Dynamic Shadows)
   if (typeof THREE === "undefined") return;
 
   var canvasEl = document.getElementById('c');
@@ -2411,101 +2446,264 @@ footer {
   var R = new THREE.WebGLRenderer({ canvas: canvasEl, antialias: !isMobile, alpha: true, powerPreference: 'high-performance' });
   R.setPixelRatio(isMobile ? Math.min(window.devicePixelRatio, 1.25) : Math.min(window.devicePixelRatio, 2));
   R.setSize(innerWidth, innerHeight);
+  R.shadowMap.enabled = true;
+  R.shadowMap.type = THREE.PCFSoftShadowMap;
+  R.toneMapping = THREE.ACESFilmicToneMapping;
+  R.toneMappingExposure = 1.06;
 
   var S = new THREE.Scene();
   var C = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.1, 450);
 
-  // Soft ambient lighting that blends naturally with photo backgrounds
-  S.add(new THREE.HemisphereLight(0xffffff, 0x556677, 0.95));
-  var sun = new THREE.DirectionalLight(0xfff5e0, 0.85);
-  sun.position.set(30, 60, 40);
+  // Procedural Sky/Ground Environment Map for Realistic Glass & Metal Reflections
+  try {
+    var envScene = new THREE.Scene();
+    var envGeo = new THREE.SphereGeometry(50, 16, 12);
+    var envCanvas = document.createElement('canvas');
+    envCanvas.width = 128; envCanvas.height = 128;
+    var ectx = envCanvas.getContext('2d');
+    var egrad = ectx.createLinearGradient(0, 0, 0, 128);
+    egrad.addColorStop(0, '#5a9be6');
+    egrad.addColorStop(0.48, '#d9ecff');
+    egrad.addColorStop(0.52, '#a7c98a');
+    egrad.addColorStop(1, '#587846');
+    ectx.fillStyle = egrad;
+    ectx.fillRect(0, 0, 128, 128);
+    var envTex = new THREE.CanvasTexture(envCanvas);
+    envScene.add(new THREE.Mesh(envGeo, new THREE.MeshBasicMaterial({ map: envTex, side: THREE.BackSide })));
+    var pmrem = new THREE.PMREMGenerator(R);
+    S.environment = pmrem.fromScene(envScene, 0.04).texture;
+    pmrem.dispose();
+  } catch (e) {}
+
+  // Enhanced Multi-Source Lighting + Dynamic Shadows
+  S.add(new THREE.HemisphereLight(0xeef6ff, 0x4f6d3f, 0.78));
+  var sun = new THREE.DirectionalLight(0xfff1d4, 1.32);
+  sun.position.set(38, 64, 46);
+  sun.castShadow = true;
+  sun.shadow.mapSize.width = isMobile ? 1024 : 2048;
+  sun.shadow.mapSize.height = isMobile ? 1024 : 2048;
+  sun.shadow.camera.near = 10;
+  sun.shadow.camera.far = 180;
+  sun.shadow.camera.left = -75;
+  sun.shadow.camera.right = 75;
+  sun.shadow.camera.top = 75;
+  sun.shadow.camera.bottom = -75;
+  sun.shadow.bias = -0.0005;
+  sun.shadow.normalBias = 0.04;
   S.add(sun);
 
-  function M(c) { return new THREE.MeshLambertMaterial({ color: c }); }
-  function box(w, h, d, c, x, y, z) {
-    var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), M(c));
+  var fillLight = new THREE.DirectionalLight(0xc4ddff, 0.36);
+  fillLight.position.set(-36, 28, -28);
+  S.add(fillLight);
+
+  // Procedural Canvas Textures
+  function makeCanvasTex(size, drawFn, repX, repY) {
+    var cv = document.createElement('canvas');
+    cv.width = size; cv.height = size;
+    drawFn(cv.getContext('2d'), size);
+    var tex = new THREE.CanvasTexture(cv);
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(repX || 1, repY || 1);
+    tex.anisotropy = isMobile ? 2 : 4;
+    return tex;
+  }
+
+  var stuccoTex = makeCanvasTex(256, function(ctx, s) {
+    ctx.fillStyle = '#f6f1ea';
+    ctx.fillRect(0, 0, s, s);
+    for (var i = 0; i < 1600; i++) {
+      ctx.fillStyle = Math.random() > 0.5 ? 'rgba(0,0,0,0.025)' : 'rgba(255,255,255,0.05)';
+      ctx.fillRect(Math.random() * s, Math.random() * s, 2, 2);
+    }
+    ctx.strokeStyle = 'rgba(180,168,152,0.18)';
+    ctx.lineWidth = 2;
+    for (var y = 64; y < s; y += 64) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(s, y); ctx.stroke();
+    }
+  }, 3, 2);
+
+  var roofTex = makeCanvasTex(256, function(ctx, s) {
+    ctx.fillStyle = '#d8322a';
+    ctx.fillRect(0, 0, s, s);
+    ctx.strokeStyle = 'rgba(110,16,12,0.22)';
+    ctx.lineWidth = 2;
+    for (var x = 0; x < s; x += 32) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, s); ctx.stroke();
+    }
+    for (var y = 0; y < s; y += 32) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(s, y); ctx.stroke();
+    }
+  }, 4, 2);
+
+  var paverTex = makeCanvasTex(256, function(ctx, s) {
+    ctx.fillStyle = '#c9b7ae';
+    ctx.fillRect(0, 0, s, s);
+    ctx.strokeStyle = 'rgba(95,78,68,0.18)';
+    ctx.lineWidth = 2;
+    for (var y = 0; y < s; y += 32) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(s, y); ctx.stroke();
+      var off = (y / 32) % 2 === 0 ? 0 : 16;
+      for (var x = off; x < s; x += 32) {
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 32); ctx.stroke();
+      }
+    }
+  }, 10, 10);
+
+  var grassTex = makeCanvasTex(256, function(ctx, s) {
+    ctx.fillStyle = '#84ba62';
+    ctx.fillRect(0, 0, s, s);
+    for (var i = 0; i < 2200; i++) {
+      ctx.fillStyle = Math.random() > 0.5 ? 'rgba(65,115,45,0.14)' : 'rgba(170,220,120,0.12)';
+      ctx.fillRect(Math.random() * s, Math.random() * s, 3, 3);
+    }
+  }, 24, 24);
+
+  var winTex = makeCanvasTex(128, function(ctx, s) {
+    var g = ctx.createLinearGradient(0, 0, 0, s);
+    g.addColorStop(0, '#9bd0f5');
+    g.addColorStop(0.55, '#5b9cd6');
+    g.addColorStop(1, '#2f5885');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, s, s);
+    ctx.strokeStyle = '#e7edf5';
+    ctx.lineWidth = 6;
+    ctx.strokeRect(3, 3, s - 6, s - 6);
+    ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(s / 2, 0); ctx.lineTo(s / 2, s); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, s / 2); ctx.lineTo(s, s / 2); ctx.stroke();
+  }, 1, 1);
+
+  // Soft Ambient Occlusion Contact Shadow Texture
+  var aoTex = makeCanvasTex(128, function(ctx, s) {
+    var g = ctx.createRadialGradient(s / 2, s / 2, s * 0.1, s / 2, s / 2, s * 0.5);
+    g.addColorStop(0, 'rgba(12, 20, 38, 0.34)');
+    g.addColorStop(0.65, 'rgba(12, 20, 38, 0.14)');
+    g.addColorStop(1, 'rgba(12, 20, 38, 0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, s, s);
+  }, 1, 1);
+  var aoMat = new THREE.MeshBasicMaterial({ map: aoTex, transparent: true, depthWrite: false });
+  function addAO(w, d, x, z, y) {
+    var ao = new THREE.Mesh(new THREE.PlaneGeometry(w, d), aoMat);
+    ao.rotation.x = -Math.PI / 2;
+    ao.position.set(x, y || 0.04, z);
+    S.add(ao);
+  }
+
+  function M(c, opts) {
+    return new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.72, metalness: 0.06 }, opts || {}));
+  }
+  function box(w, h, d, c, x, y, z, opts) {
+    var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), M(c, opts));
     m.position.set(x, y + h / 2, z);
+    m.castShadow = true;
+    m.receiveShadow = true;
     S.add(m);
     return m;
   }
-  function flat(w, d, c, x, z, y) {
-    var m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), M(c));
+  function flat(w, d, c, x, z, y, opts) {
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), M(c, opts));
     m.rotation.x = -Math.PI / 2;
     m.position.set(x, y || 0, z);
+    m.receiveShadow = true;
     S.add(m);
     return m;
   }
 
-  var WHITE = 0xf6f1ea, RED = 0xd8322a, BLUE = 0x3a86d8, WIN = 0x9fc8ea, YELLOW = 0xf4b400;
+  var WHITE = 0xf6f1ea, RED = 0xd8322a, BLUE = 0x3a86d8, YELLOW = 0xf4b400;
+  var stuccoOpts = { map: stuccoTex, roughness: 0.8, metalness: 0.03 };
+  var roofOpts = { map: roofTex, roughness: 0.55, metalness: 0.14 };
+  var porchOpts = { roughness: 0.45, metalness: 0.18 };
+  var glassMat = new THREE.MeshStandardMaterial({
+    map: winTex,
+    roughness: 0.08,
+    metalness: 0.86,
+    envMapIntensity: 1.5
+  });
 
-  // Ground planes (subtle translucent green/path)
-  flat(500, 500, 0x8cc26a, 0, 0, 0);
-  flat(60, 60, 0xc9b7ae, 0, 36, 0.03);
-  flat(9, 30, 0xc9b7ae, 0, 70, 0.03);
+  // Ground planes with procedural grass & stone pavers
+  flat(500, 500, 0xffffff, 0, 0, 0, { map: grassTex, roughness: 0.92, metalness: 0.0 });
+  flat(60, 60, 0xffffff, 0, 36, 0.03, { map: paverTex, roughness: 0.85, metalness: 0.04 });
+  flat(9, 30, 0xffffff, 0, 70, 0.03, { map: paverTex, roughness: 0.85, metalness: 0.04 });
 
-  // Main School Building
-  box(26, 10, 12, WHITE, 0, 0, 0);
-  box(27, 0.9, 13, RED, 0, 10, 0);
-  box(13, 9, 3.5, BLUE, 0, 0, 7.2);
-  box(14, 0.9, 4.2, RED, 0, 9, 7.2);
-  box(9, 0.7, 5, RED, 0, 4, 9.4);
-  box(0.7, 4, 0.7, WHITE, -4, 0, 11.6);
-  box(0.7, 4, 0.7, WHITE, 4, 0, 11.6);
-  box(3.4, 3.2, 0.3, 0x5a3b2e, 0, 0, 9.1);
+  // Main School Building + AO
+  addAO(32, 18, 0, 1, 0.04);
+  box(26, 10, 12, WHITE, 0, 0, 0, stuccoOpts);
+  box(27, 0.9, 13, RED, 0, 10, 0, roofOpts);
+  box(13, 9, 3.5, BLUE, 0, 0, 7.2, porchOpts);
+  box(14, 0.9, 4.2, RED, 0, 9, 7.2, roofOpts);
+  box(9, 0.7, 5, RED, 0, 4, 9.4, roofOpts);
+  box(0.7, 4, 0.7, WHITE, -4, 0, 11.6, stuccoOpts);
+  box(0.7, 4, 0.7, WHITE, 4, 0, 11.6, stuccoOpts);
+  box(3.4, 3.2, 0.3, 0x5a3b2e, 0, 0, 9.1, { roughness: 0.45, metalness: 0.1 });
 
-  // Wings: Labs & Library
+  // Wings: Labs & Library + Reflective Glass Windows
   [-1, 1].forEach(function(s) {
-    box(16, 8, 11, WHITE, s * 21, 0, -0.5);
-    box(17, 0.8, 12, RED, s * 21, 8, -0.5);
+    addAO(20, 15, s * 21, -0.5, 0.04);
+    box(16, 8, 11, WHITE, s * 21, 0, -0.5, stuccoOpts);
+    box(17, 0.8, 12, RED, s * 21, 8, -0.5, roofOpts);
     for (var i = 0; i < 4; i++) {
       for (var j = 0; j < 2; j++) {
-        var w = new THREE.Mesh(new THREE.PlaneGeometry(2, 2.2), new THREE.MeshBasicMaterial({ color: WIN }));
+        var w = new THREE.Mesh(new THREE.PlaneGeometry(2, 2.2), glassMat);
         w.position.set(s * 21 - 6 + i * 4, 2.6 + j * 3.3, 5.1);
         S.add(w);
       }
     }
     for (var i = 0; i < 4; i++) {
-      var w = new THREE.Mesh(new THREE.PlaneGeometry(2, 2.2), new THREE.MeshBasicMaterial({ color: WIN }));
+      var w = new THREE.Mesh(new THREE.PlaneGeometry(2, 2.2), glassMat);
       w.position.set(-9 + i * 6, 2.8, 6.05);
       if (s < 0) S.add(w);
     }
   });
 
   // Entrance Gate & Boundary Walls
-  [-9, 9].forEach(function(x) { box(2, 6, 2, RED, x, 0, 88); });
-  box(20, 1.2, 2, RED, 0, 6, 88);
-  box(70, 2, 1, WHITE, -40, 0, 88);
-  box(70, 2, 1, WHITE, 40, 0, 88);
+  [-9, 9].forEach(function(x) {
+    addAO(4, 4, x, 88, 0.04);
+    box(2, 6, 2, RED, x, 0, 88, roofOpts);
+  });
+  box(20, 1.2, 2, RED, 0, 6, 88, roofOpts);
+  box(70, 2, 1, WHITE, -40, 0, 88, stuccoOpts);
+  box(70, 2, 1, WHITE, 40, 0, 88, stuccoOpts);
 
-  // School Bus
-  box(3.6, 2.6, 8.5, YELLOW, -15, 0, 78);
-  box(3.6, 0.4, 8.7, 0x111111, -15, 0.4, 78);
+  // School Bus + AO
+  addAO(6, 11, -15, 78, 0.04);
+  box(3.6, 2.6, 8.5, YELLOW, -15, 0, 78, { roughness: 0.34, metalness: 0.32 });
+  box(3.6, 0.4, 8.7, 0x111111, -15, 0.4, 78, { roughness: 0.5, metalness: 0.4 });
   [-3, 1.5, 3].forEach(function(bz) {
-    var bw1 = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.4, 12), M(0x222222));
+    var bw1 = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.4, 12), M(0x222222, { roughness: 0.85 }));
     bw1.rotation.z = Math.PI / 2;
     bw1.position.set(-17, 0.55, 78 + bz);
+    bw1.castShadow = true;
     S.add(bw1);
     var bw2 = bw1.clone();
     bw2.position.set(-13, 0.55, 78 + bz);
     S.add(bw2);
   });
-  var busWin = new THREE.Mesh(new THREE.PlaneGeometry(7, 0.9), new THREE.MeshBasicMaterial({ color: 0x334466 }));
+  var busWin = new THREE.Mesh(new THREE.PlaneGeometry(7, 0.9), glassMat);
   busWin.position.set(-16.85, 2, 78);
   busWin.rotation.y = -Math.PI / 2;
   S.add(busWin);
 
-  // Flagpole & National Tricolor
-  box(0.3, 16, 0.3, 0xdddddd, -20, 0, 14);
+  // Flagpole (Brushed Metal) & Animated National Tricolor
+  box(0.3, 16, 0.3, 0xdde3ec, -20, 0, 14, { roughness: 0.25, metalness: 0.88 });
+  var flagStrips = [];
   [0xff9933, 0xffffff, 0x138808].forEach(function(c, i) {
-    var f = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 0.9), new THREE.MeshBasicMaterial({ color: c, side: THREE.DoubleSide }));
+    var f = new THREE.Mesh(
+      new THREE.PlaneGeometry(3.4, 0.9, 6, 1),
+      new THREE.MeshStandardMaterial({ color: c, roughness: 0.75, side: THREE.DoubleSide })
+    );
     f.position.set(-18.3, 15.4 - i * 0.9, 14);
+    f.castShadow = true;
     S.add(f);
+    flagStrips.push(f);
   });
 
-  // Morning Assembly: 120 Students
-  var st = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.35, 0.35, 1.6, 6), M(0x1a2350), 120),
+  // Morning Assembly: 120 Students (with Shadows)
+  var st = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.35, 0.35, 1.6, 6), M(0x1a2350, { roughness: 0.7 }), 120),
       d = new THREE.Object3D(),
       q = 0;
+  st.castShadow = true;
+  st.receiveShadow = true;
   for (var r = 0; r < 8; r++) {
     for (var c = 0; c < 15; c++) {
       d.position.set(-14 + c * 2, 0.8, 18 + r * 2.3);
@@ -2516,29 +2714,34 @@ footer {
   S.add(st);
 
   // Sports track & field
-  var tr = new THREE.Mesh(new THREE.RingGeometry(13, 19, 48), M(0xb5573a));
+  var tr = new THREE.Mesh(new THREE.RingGeometry(13, 19, 48), M(0xb5573a, { roughness: 0.9 }));
   tr.rotation.x = -Math.PI / 2;
   tr.scale.set(1.6, 1, 1);
   tr.position.set(70, 0.05, 10);
+  tr.receiveShadow = true;
   S.add(tr);
 
-  var fd = new THREE.Mesh(new THREE.CircleGeometry(13, 48), M(0x5fae55));
+  var fd = new THREE.Mesh(new THREE.CircleGeometry(13, 48), M(0x5fae55, { roughness: 0.9 }));
   fd.rotation.x = -Math.PI / 2;
   fd.scale.set(1.6, 1, 1);
   fd.position.set(70, 0.06, 10);
+  fd.receiveShadow = true;
   S.add(fd);
 
-  // Trees
+  // Trees (with Shadows)
   for (var k = 0; k < 55; k++) {
     var x = (Math.random() < 0.5 ? -1 : 1) * (34 + Math.random() * 50),
         z = -40 + Math.random() * 140;
     if (Math.abs(x - 70) < 35 && z > -12 && z < 32) continue;
     var h = 2 + Math.random() * 2,
-        t = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.4, h, 6), M(0x6b4a2f));
+        t = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.4, h, 6), M(0x6b4a2f, { roughness: 0.9 }));
     t.position.set(x, h / 2, z);
+    t.castShadow = true;
     S.add(t);
-    var l = new THREE.Mesh(new THREE.IcosahedronGeometry(1.8 + Math.random() * 1.4, 0), M(0x4f9a4a));
+    var l = new THREE.Mesh(new THREE.IcosahedronGeometry(1.8 + Math.random() * 1.4, 0), M(0x4f9a4a, { roughness: 0.82 }));
     l.position.set(x, h + 1.6, z);
+    l.castShadow = true;
+    l.receiveShadow = true;
     S.add(l);
   }
 
@@ -2615,8 +2818,13 @@ footer {
   });
 
   function loop(t) {
-    cur = calm ? tgt : cur + (tgt - cur) * 0.06;
-    C.position.copy(cam.getPoint(cur));
+    cur = calm ? tgt : cur + (tgt - cur) * 0.055;
+    var camPos = cam.getPoint(cur);
+    if (!calm) {
+      camPos.y += Math.sin(t * 0.0008) * 0.14;
+      camPos.x += Math.cos(t * 0.0006) * 0.18;
+    }
+    C.position.copy(camPos);
     C.lookAt(look.getPoint(cur));
     if (bar) bar.style.width = (cur * 100) + '%';
     updateHUD(cur);
@@ -2633,6 +2841,10 @@ footer {
     }
 
     if (!calm) {
+      // Gentle flag wave
+      flagStrips.forEach(function(f, idx) {
+        f.rotation.y = Math.sin(t * 0.0035 + idx * 0.3) * 0.12;
+      });
       var a = pg.attributes.position.array;
       for (var i = 0; i < N; i++) {
         a[i * 3 + 1] -= 0.02;
